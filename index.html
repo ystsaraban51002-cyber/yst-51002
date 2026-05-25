@@ -1509,26 +1509,14 @@ function openAddHistoryModal(personId) {
       <div class="form-group"><label>วันประกาศราชกิจจา</label><input type="date" id="m-gdate"></div>
     </div>
     <div class="form-group"><label>สถานะ</label><input id="m-status" placeholder="เช่น ได้รับแล้ว ปี 67, รอประกาศ"></div>
+    
+    <!-- 🔄 ปรับจากช่องอัปโหลดไฟล์ เป็นช่องใส่ลิงก์แชร์ไฟล์จาก Google Drive แทนเพื่อตัดปัญหาระบบล็อก -->
     <div class="form-group">
-      <label>แนบไฟล์ประกาศ PDF</label>
-      <div class="upload-zone" id="uz-add"
-           ondragover="event.preventDefault();this.classList.add('drag')"
-           ondragleave="this.classList.remove('drag')"
-           ondrop="handleDrop(event,'add')">
-        <input type="file" accept=".pdf,application/pdf" id="m-file-input" onchange="handleFileSelect(this,'add')">
-        <i class="ti ti-file-upload"></i>
-        <div class="uz-label">คลิกหรือลากไฟล์ PDF มาวางที่นี่</div>
-        <div class="uz-hint">รองรับไฟล์ .pdf ขนาดไม่เกิน 10 MB</div>
-      </div>
-      <div id="uz-preview-add" style="display:none" class="upload-preview">
-        <i class="ti ti-file-text"></i>
-        <div>
-          <div class="up-name" id="uz-name-add"></div>
-          <div class="up-size" id="uz-size-add"></div>
-        </div>
-        <button onclick="clearFile('add')" title="ลบไฟล์">✕</button>
-      </div>
+      <label style="color: #185FA5; font-weight: bold;">🔗 วางลิงก์ไฟล์ประกาศ PDF (จาก Google Drive / OneDrive)</label>
+      <input type="url" id="m-file-link-input" placeholder="https://google.com" style="border: 2px solid #185FA5;">
+      <small style="color: #666; display: block; margin-top: 4px;">* วิธีใช้: อัปโหลดไฟล์ลง Google Drive ของคุณ -> ตั้งค่าแชร์เป็น 'ทุกคนที่มีลิงก์' -> คัดลอกลิงก์มาวางที่นี่</small>
     </div>
+    
     <div class="form-group"><label>หมายเหตุ</label><textarea id="m-note" rows="2" placeholder="เช่น ประจำปี 2557 เล่ม 132 ตอนที่ 17"></textarea></div>`,
     `<button class="btn btn-outline" onclick="closeModal()">ยกเลิก</button>
      <button class="btn btn-primary" id="btn-save-hist" onclick="submitAddHistory()"><i class="ti ti-check"></i> บันทึก</button>`
@@ -1540,55 +1528,11 @@ async function submitAddHistory() {
   const pData = db.find(x => String(x.id) === String(personId));
   const btn = document.getElementById('btn-save-hist');
 
-  let announceFileName = '', announceFileId = '', announceFileUrl = '';
+  if (btn) { btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader-2" style="animation:spin .8s linear infinite"></i> กำลังบันทึก...'; }
 
-  // 1. จัดการอัปโหลดไฟล์ PDF (ปรับปรุงมาใช้ FormData เพื่อให้ Google ยอมรับ 100%)
-  if (selectedUploadFile['add']) {
-    const file = selectedUploadFile['add'];
-    if (file.size > 10 * 1024 * 1024) { toast('ไฟล์ใหญ่เกิน 10 MB', 'error'); return; }
-    if (btn) { btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader-2" style="animation:spin .8s linear infinite"></i> กำลังอัปโหลด...'; }
-    
-    try {
-      const base64 = await fileToBase64(file);
-      const personName = pData ? (pData.prefix + pData.firstName + ' ' + pData.lastName) : '';
-      
-      // เปลี่ยนมาส่งข้อมูลแบบฟอร์มธรรมดา ทะลุกำแพง CORS ได้แน่นอนและอ่านค่ารีเทิร์นได้
-      const formData = new FormData();
-      formData.append('action', 'uploadFile');
-      formData.append('payload', JSON.stringify({
-        fileName: file.name,
-        mimeType: file.type || 'application/pdf',
-        base64Data: base64,
-        personId: personId,
-        personName: personName
-      }));
+  // ดึงค่าลิงก์ที่เรากรอกในช่องมาใช้โดยตรง ไม่ต้องแปลงไฟล์ ไม่ต้องส่งผ่าน API อัปโหลดให้รวนอีกต่อไป
+  const fileUrlInput = document.getElementById('m-file-link-input').value;
 
-      // ยิงตรงเข้าสคริปต์
-      const response = await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        body: formData
-      });
-      
-      const uploadRes = await response.json();
-
-      if (uploadRes.ok) {
-        announceFileName = uploadRes.fileName;
-        announceFileId   = uploadRes.fileId;
-        announceFileUrl  = uploadRes.fileUrl;
-      } else {
-        toast('อัปโหลดไฟล์ไม่สำเร็จ: ' + uploadRes.error, 'error');
-        if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-check"></i> บันทึก'; }
-        return;
-      }
-    } catch(e) { 
-      // 💡 จุดแก้ไขสำคัญ: ในกรณีที่ Google บันทึกไฟล์สำเร็จแต่บล็อกผลลัพธ์ย้อนกลับ 
-      // เราจะปล่อยให้ระบบบันทึกประวัติต่อไปเลย ไม่สั่ง return เพื่อไม่ให้กระบวนการหยุดชะงัก
-      announceFileName = file.name;
-      announceFileUrl  = "เปิดดูไฟล์ได้โดยตรงที่ Google Drive ของระบบ";
-    }
-  }
-
-  // 2. ส่งข้อมูลส่วนตัวและประวัติไปบันทึกลง Google Sheets
   const payload = {
     personId,
     rank:            document.getElementById('m-rank').value,
@@ -1596,9 +1540,9 @@ async function submitAddHistory() {
     gazetteDate:     document.getElementById('m-gdate').value,
     status:          document.getElementById('m-status').value,
     note:            document.getElementById('m-note').value,
-    announceFileName, 
-    announceFileId, 
-    announceFileUrl,
+    announceFileName: fileUrlInput ? "เปิดดูไฟล์ประกาศ PDF" : "", 
+    announceFileId:   "", 
+    announceFileUrl:  fileUrlInput, // ลิงก์จะถูกส่งไปบันทึกลง Google Sheets ช่องที่ 7 ทันที
   };
 
   try {
@@ -1607,13 +1551,12 @@ async function submitAddHistory() {
       if (!pData.histories) pData.histories = []; 
       pData.histories.push({ ...payload, id: res.id }); 
     }
-    delete selectedUploadFile['add'];
     closeModal(); 
-    toast('เพิ่มประวัติและบันทึกเอกสารสำเร็จเรียบร้อย', 'success');
+    toast('เพิ่มประวัติและบันทึกลิงก์เอกสารสำเร็จเรียบร้อย', 'success');
     renderAll(); 
     selectPerson(personId);
   } catch(e) { 
-    toast('เกิดข้อผิดพลาดในการบันทึกข้อมูล: ' + e.message, 'error'); 
+    toast('เกิดข้อผิดพลาด: ' + e.message, 'error'); 
   } finally {
     if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-check"></i> บันทึก'; }
   }
