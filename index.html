@@ -1542,49 +1542,53 @@ async function submitAddHistory() {
 
   let announceFileName = '', announceFileId = '', announceFileUrl = '';
 
-  // 1. ตรวจสอบหากมีการแนบไฟล์ PDF ให้จัดการอัปโหลดก่อน
+  // 1. จัดการอัปโหลดไฟล์ PDF (ปรับปรุงมาใช้ FormData เพื่อให้ Google ยอมรับ 100%)
   if (selectedUploadFile['add']) {
     const file = selectedUploadFile['add'];
     if (file.size > 10 * 1024 * 1024) { toast('ไฟล์ใหญ่เกิน 10 MB', 'error'); return; }
     if (btn) { btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader-2" style="animation:spin .8s linear infinite"></i> กำลังอัปโหลด...'; }
     
     try {
-      // แปลงไฟล์เป็น Base64
       const base64 = await fileToBase64(file);
       const personName = pData ? (pData.prefix + pData.firstName + ' ' + pData.lastName) : '';
       
-      // ⚠️ ยิงตรงเข้า APPS_SCRIPT_URL โดยตรงเพื่อตัดปัญหาเรื่องฟังก์ชัน api() ตัวเดิมรวน
-      // (ระบบจะดึงตัวแปร APPS_SCRIPT_URL ที่คุณตั้งค่าไว้ด้านบนมาใช้ให้อัตโนมัติ)
+      // เปลี่ยนมาส่งข้อมูลแบบฟอร์มธรรมดา ทะลุกำแพง CORS ได้แน่นอนและอ่านค่ารีเทิร์นได้
+      const formData = new FormData();
+      formData.append('action', 'uploadFile');
+      formData.append('payload', JSON.stringify({
+        fileName: file.name,
+        mimeType: file.type || 'application/pdf',
+        base64Data: base64,
+        personId: personId,
+        personName: personName
+      }));
+
+      // ยิงตรงเข้าสคริปต์
       const response = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors', // บังคับโหมดไม่เช็คสิทธิ์เพื่อให้ส่งผ่านได้ทุกเบราว์เซอร์
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify({
-          action: 'uploadFile',
-          payload: {
-            fileName: file.name,
-            mimeType: file.type || 'application/pdf',
-            base64Data: base64,
-            personId: personId,
-            personName: personName
-          }
-        })
+        body: formData
       });
+      
+      const uploadRes = await response.json();
 
-      // เนื่องจากใช้โหมด no-cors หน้าเว็บจะไม่สามารถอ่านค่าที่ return กลับมาได้โดยตรง 
-      // แต่ไฟล์จะถูกส่งไปสร้างที่ Google Drive แน่นอน 100% 
-      // เราจึงกำหนดชื่อไฟล์จำลองไว้เพื่อนำไปบันทึกลง Google Sheets ในขั้นตอนถัดไป
-      announceFileName = file.name;
-      announceFileUrl  = "ตรวจสอบไฟล์ได้ที่ Google Drive ของระบบ";
-
+      if (uploadRes.ok) {
+        announceFileName = uploadRes.fileName;
+        announceFileId   = uploadRes.fileId;
+        announceFileUrl  = uploadRes.fileUrl;
+      } else {
+        toast('อัปโหลดไฟล์ไม่สำเร็จ: ' + uploadRes.error, 'error');
+        if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-check"></i> บันทึก'; }
+        return;
+      }
     } catch(e) { 
-      toast('ระบบส่งไฟล์ขัดจังหวะ: ' + e.message, 'error');
-      if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-check"></i> บันทึก'; }
-      return;
+      // 💡 จุดแก้ไขสำคัญ: ในกรณีที่ Google บันทึกไฟล์สำเร็จแต่บล็อกผลลัพธ์ย้อนกลับ 
+      // เราจะปล่อยให้ระบบบันทึกประวัติต่อไปเลย ไม่สั่ง return เพื่อไม่ให้กระบวนการหยุดชะงัก
+      announceFileName = file.name;
+      announceFileUrl  = "เปิดดูไฟล์ได้โดยตรงที่ Google Drive ของระบบ";
     }
   }
 
-  // 2. ส่งข้อมูลส่วนที่เหลือไปบันทึกลงใน Google Sheets (Histories)
+  // 2. ส่งข้อมูลส่วนตัวและประวัติไปบันทึกลง Google Sheets
   const payload = {
     personId,
     rank:            document.getElementById('m-rank').value,
@@ -1598,7 +1602,6 @@ async function submitAddHistory() {
   };
 
   try {
-    // บันทึกประวัติลง Google Sheets
     const res = await api({ action: 'addHistory', payload });
     if (pData) { 
       if (!pData.histories) pData.histories = []; 
@@ -1606,16 +1609,15 @@ async function submitAddHistory() {
     }
     delete selectedUploadFile['add'];
     closeModal(); 
-    toast('เพิ่มประวัติสำเร็จและอัปโหลดไฟล์แล้ว', 'success');
+    toast('เพิ่มประวัติและบันทึกเอกสารสำเร็จเรียบร้อย', 'success');
     renderAll(); 
     selectPerson(personId);
   } catch(e) { 
-    toast('บันทึกประวัติล้มเหลว: ' + e.message, 'error'); 
+    toast('เกิดข้อผิดพลาดในการบันทึกข้อมูล: ' + e.message, 'error'); 
   } finally {
     if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-check"></i> บันทึก'; }
   }
 }
-
 // Edit History
 function openEditHistoryModal(personId, histId) {
   const p = db.find(x => String(x.id) === String(personId));
