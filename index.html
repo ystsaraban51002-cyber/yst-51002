@@ -1554,15 +1554,25 @@ async function submitAddHistory() {
         fileName: file.name, mimeType: file.type || 'application/pdf',
         base64Data: base64, personId, personName,
       }});
+      
       if (uploadRes.ok) {
         announceFileName = uploadRes.fileName;
         announceFileId   = uploadRes.fileId;
         announceFileUrl  = uploadRes.fileUrl;
-      } else { toast('อัปโหลดไฟล์ไม่สำเร็จ: ' + uploadRes.error, 'error'); }
-    } catch(e) { toast('อัปโหลดไฟล์ไม่สำเร็จ', 'error'); }
-    finally { if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-check"></i> บันทึก'; } }
+      } else { 
+        toast('อัปโหลดไฟล์ไม่สำเร็จ: ' + uploadRes.error, 'error'); 
+        if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-check"></i> บันทึก'; }
+        return; // <div> ใช้งานได้จริง: หยุดทำงานตรงนี้เลย ไม่วิ่งลงไปบันทึกประวัติข้างล่าง
+      }
+    } catch(e) { 
+      toast('อัปโหลดไฟล์ไม่สำเร็จ', 'error'); 
+      if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-check"></i> บันทึก'; }
+      return; // <div> หยุดทำงานตรงนี้หากโค้ดฝั่งแปลงไฟล์หรือเน็ตหลุดพัง
+    }
+    // ย้ายการคืนค่าปุ่มมาไว้หลังผ่านกรณีสำเร็จเท่านั้น เพื่อไม่ให้เกิดปุ่มกระพริบซ้อน
   }
 
+  // ส่วนบันทึกข้อมูลประวัติ (จะทำงานต่อเมื่ออัปโหลดไฟล์สำเร็จ หรือไม่ได้แนบไฟล์เท่านั้น)
   const payload = {
     personId,
     rank:            document.getElementById('m-rank').value,
