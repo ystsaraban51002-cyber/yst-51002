@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>ทะเบียนเครื่องราชอิสริยาภรณ์ อบจ.ยโสธร</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+/* ===================== RESET & BASE ===================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:       #0d2b55;
+  --navy-light: #1a3f75;
+  --gold:       #c9963a;
+  --gold-light: #e8b84b;
+  --gold-pale:  #fdf4e3;
+  --cream:      #faf8f4;
+  --white:      #ffffff;
+  --text-dark:  #1a1a2e;
+  --text-mid:   #4a5568;
+  --text-soft:  #718096;
+  --border:     #e2d9cc;
+  --border-mid: #c9b89a;
+  --success:    #2d7a4f;
+  --success-bg: #e8f5ee;
+  --warn:       #b45309;
+  --warn-bg:    #fef3c7;
+  --danger:     #b91c1c;
+  --danger-bg:  #fee2e2;
+  --info:       #1a3f75;
+  --info-bg:    #e8effc;
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  16px;
+  --radius-xl:  22px;
+  --shadow-sm:  0 1px 3px rgba(13,43,85,.08), 0 1px 2px rgba(13,43,85,.04);
+  --shadow-md:  0 4px 16px rgba(13,43,85,.10), 0 2px 6px rgba(13,43,85,.06);
+  --shadow-lg:  0 12px 40px rgba(13,43,85,.14), 0 4px 12px rgba(13,43,85,.08);
+  --transition: all .18s cubic-bezier(.4,0,.2,1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Sarabun', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===================== LAYOUT ===================== */
+.app-shell { display: flex; min-height: 100vh; }
+
+/* ---- Sidebar ---- */
+.sidebar {
+  width: 240px; min-height: 100vh;
+  background: var(--navy);
+  display: flex; flex-direction: column;
+  position: fixed; top: 0; left: 0; bottom: 0;
+  z-index: 50;
+  transition: transform .25s ease;
+}
+
+.sidebar-brand {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.brand-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.brand-icon {
+  width: 38px; height: 38px; border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.brand-text { line-height: 1.2; }
+.brand-title { font-size: 13px; font-weight: 700; color: #fff; font-family: 'Noto Serif Thai', serif; }
+.brand-sub { font-size: 10px; color: rgba(255,255,255,.5); }
+
+.sidebar-nav { flex: 1; padding: 12px 10px; overflow-y: auto; }
+.nav-section { margin-bottom: 20px; }
+.nav-section-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 1px;
+  color: rgba(255,255,255,.35); padding: 4px 10px 6px;
+  text-transform: uppercase;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: var(--radius-md);
+  color: rgba(255,255,255,.65); font-size: 14px; font-weight: 400;
+  cursor: pointer; transition: var(--transition); margin-bottom: 2px;
+  border: none; background: transparent; width: 100%; text-align: left;
+}
+.nav-item i { font-size: 18px; flex-shrink: 0; }
+.nav-item:hover { background: rgba(255,255,255,.08); color: #fff; }
+.nav-item.active { background: rgba(201,150,58,.2); color: var(--gold-light); font-weight: 600; }
+.nav-badge {
+  margin-left: auto; background: var(--gold);
+  color: var(--navy); font-size: 11px; font-weight: 700;
+  padding: 1px 7px; border-radius: 99px; min-width: 22px; text-align: center;
+}
+
+.sidebar-footer {
+  padding: 12px 10px;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.sidebar-footer small { font-size: 11px; color: rgba(255,255,255,.3); padding: 6px 12px; display: block; }
+
+/* ---- Main Content ---- */
+.main {
+  margin-left: 240px;
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column;
+}
+
+/* ---- Topbar ---- */
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(250,248,244,.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  height: 60px;
+  display: flex; align-items: center; gap: 12px;
+}
+.topbar-title { font-size: 16px; font-weight: 600; color: var(--text-dark); flex: 1; }
+.topbar-title span { color: var(--text-soft); font-weight: 400; font-size: 13px; margin-left: 6px; }
+.hamburger {
+  display: none; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--white);
+  cursor: pointer; font-size: 20px; color: var(--text-mid);
+}
+
+.page { display: none; padding: 24px; animation: fadeIn .2s ease; }
+.page.active { display: block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+
+/* ===================== COMPONENTS ===================== */
+
+/* Stats Cards */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 24px; }
+.stat-card {
+  background: var(--white); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+}
+.stat-card-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 10px;
+}
+.stat-card-val { font-size: 28px; font-weight: 700; color: var(--text-dark); line-height: 1; }
+.stat-card-label { font-size: 12px; color: var(--text-soft); margin-top: 4px; }
+
+/* Toolbar */
+.toolbar {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; align-items: center;
+}
+.search-wrap { position: relative; flex: 1; min-width: 180px; }
+.search-wrap i { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--text-soft); font-size: 17px; pointer-events: none; }
+.search-wrap input { padding-left: 36px; }
+input, select, textarea {
+  width: 100%;
+  padding: 9px 13px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: 'Sarabun', sans-serif;
+  font-size: 14px;
+  color: var(--text-dark);
+  background: var(--white);
+  transition: var(--transition);
+  outline: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--navy-light);
+  box-shadow: 0 0 0 3px rgba(26,63,117,.1);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 18px; border-radius: var(--radius-md);
+  font-family: 'Sarabun', sans-serif;
+  font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: var(--transition);
+  border: 1px solid transparent; white-space: nowrap;
+  text-decoration: none;
+}
+.btn i { font-size: 17px; }
+.btn-primary { background: var(--navy); color: #fff; border-color: var(--navy); }
+.btn-primary:hover { background: var(--navy-light); }
+.btn-gold { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 600; }
+.btn-gold:hover { background: var(--gold-light); }
+.btn-outline { background: var(--white); color: var(--text-mid); border-color: var(--border); }
+.btn-outline:hover { border-color: var(--border-mid); background: var(--cream); }
+.btn-danger { background: var(--danger-bg); color: var(--danger); border-color: #fca5a5; }
+.btn-danger:hover { background: #fecaca; }
+.btn-sm { padding: 5px 11px; font-size: 13px; }
+.btn-sm i { font-size: 15px; }
+.btn-icon { padding: 7px; width: 34px; height: 34px; justify-content: center; }
+
+/* Person Cards */
+.person-list { display: flex; flex-direction: column; gap: 10px; }
+.person-card {
+  background: var(--white); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); padding: 16px 18px;
+  box-shadow: var(--shadow-sm); cursor: pointer;
+  transition: var(--transition);
+}
+.person-card:hover { border-color: var(--border-mid); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.person-card.active { border-color: var(--navy-light); border-width: 1.5px; box-shadow: 0 0 0 3px rgba(26,63,117,.08); }
+.person-card-top { display: flex; align-items: flex-start; gap: 13px; }
+.avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 700; flex-shrink: 0;
+  font-family: 'Noto Serif Thai', serif;
+}
+.avatar-exec { background: linear-gradient(135deg, #1a3f75, #2d5fa8); color: #fff; }
+.avatar-member { background: linear-gradient(135deg, #0d6e55, #14a080); color: #fff; }
+.person-info { flex: 1; min-width: 0; }
+.person-name { font-size: 15px; font-weight: 600; color: var(--text-dark); }
+.person-pos { font-size: 12px; color: var(--text-soft); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.person-actions { display: flex; gap: 5px; flex-shrink: 0; }
+.person-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+
+/* Badges */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 500; padding: 3px 9px;
+  border-radius: 99px; line-height: 1.4;
+}
+.badge-gold { background: var(--gold-pale); color: #92600a; border: 1px solid #e8c97a; }
+.badge-navy { background: var(--info-bg); color: var(--info); border: 1px solid #b3c9f0; }
+.badge-green { background: var(--success-bg); color: var(--success); border: 1px solid #a7d9bc; }
+.badge-orange { background: var(--warn-bg); color: var(--warn); border: 1px solid #fcd47a; }
+.badge-gray { background: #f3f4f6; color: #6b7280; border: 1px solid #d1d5db; }
+.badge-red { background: var(--danger-bg); color: var(--danger); border: 1px solid #fca5a5; }
+
+/* Detail Panel */
+.detail-panel {
+  background: var(--white); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); box-shadow: var(--shadow-md);
+  margin-top: 16px; overflow: hidden;
+}
+.detail-header {
+  padding: 18px 22px; background: var(--navy);
+  display: flex; align-items: center; gap: 14px;
+}
+.detail-header-info { flex: 1; }
+.detail-header-name { font-size: 17px; font-weight: 700; color: #fff; font-family: 'Noto Serif Thai', serif; }
+.detail-header-pos { font-size: 12px; color: rgba(255,255,255,.6); margin-top: 2px; }
+.detail-body { padding: 20px 22px; }
+.detail-section { margin-bottom: 22px; }
+.detail-section:last-child { margin-bottom: 0; }
+.section-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: 13px; font-weight: 600; color: var(--text-soft);
+  text-transform: uppercase; letter-spacing: .5px;
+  display: flex; align-items: center; gap: 6px;
+}
+.section-title i { font-size: 16px; }
+
+/* Table */
+.tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius-md); border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th {
+  background: #f3f0ea; padding: 10px 13px;
+  text-align: left; font-weight: 600; font-size: 12px;
+  color: var(--text-mid); white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+td { padding: 10px 13px; border-bottom: 1px solid var(--border); vertical-align: middle; color: var(--text-dark); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--cream); }
+
+/* Tenure Summary Box */
+.tenure-summary {
+  background: var(--cream); border-radius: var(--radius-md);
+  border: 1px solid var(--border); padding: 14px 16px; margin-top: 10px;
+}
+.tenure-summary-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 13px; }
+.tenure-summary-row .label { color: var(--text-soft); }
+.tenure-summary-total { font-weight: 700; font-size: 15px; color: var(--navy); border-top: 1px solid var(--border); margin-top: 8px; padding-top: 8px; }
+.eligible-box {
+  background: var(--gold-pale); border: 1px solid #e8c97a;
+  border-radius: var(--radius-md); padding: 12px 16px; margin-top: 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.eligible-box i { font-size: 22px; color: var(--gold); }
+.eligible-box-text { font-size: 13px; }
+.eligible-box-text strong { color: var(--text-dark); display: block; margin-bottom: 2px; }
+.eligible-box-text span { color: var(--text-soft); }
+
+/* Modal */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(10,20,40,.45);
+  backdrop-filter: blur(3px);
+  z-index: 200;
+  display: flex; align-items: center; justify-content: center; padding: 16px;
+  animation: fadeIn .15s ease;
+}
+.modal {
+  background: var(--white); border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  width: 100%; max-width: 520px;
+  max-height: 90vh; overflow-y: auto;
+  animation: slideUp .2s ease;
+}
+@keyframes slideUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
+.modal-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.modal-header-icon {
+  width: 36px; height: 36px; border-radius: var(--radius-md);
+  background: var(--info-bg); display: flex; align-items: center; justify-content: center;
+  color: var(--navy); font-size: 18px;
+}
+.modal-header h2 { font-size: 16px; font-weight: 600; color: var(--text-dark); flex: 1; }
+.modal-body { padding: 20px 24px; }
+.modal-footer {
+  padding: 14px 24px; border-top: 1px solid var(--border);
+  display: flex; gap: 10px; justify-content: flex-end;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-mid); margin-bottom: 5px; }
+.form-group input, .form-group select, .form-group textarea { font-size: 14px; }
+.form-group textarea { resize: vertical; min-height: 72px; }
+
+/* Toast */
+.toast-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 500; display: flex; flex-direction: column; gap: 8px; }
+.toast {
+  background: var(--text-dark); color: #fff;
+  padding: 12px 18px; border-radius: var(--radius-md);
+  font-size: 13px; box-shadow: var(--shadow-lg);
+  display: flex; align-items: center; gap: 8px;
+  animation: slideUp .2s ease;
+  max-width: 300px;
+}
+.toast.success { background: var(--success); }
+.toast.error { background: var(--danger); }
+
+/* Loading */
+.loading-overlay {
+  position: fixed; inset: 0; background: rgba(250,248,244,.85);
+  backdrop-filter: blur(6px); z-index: 999;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+}
+.spinner {
+  width: 44px; height: 44px; border: 3px solid var(--border);
+  border-top-color: var(--navy); border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text { font-size: 14px; color: var(--text-soft); }
+
+/* Report page */
+.report-card {
+  background: var(--white); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); padding: 22px 24px;
+  box-shadow: var(--shadow-sm); margin-bottom: 16px;
+}
+.report-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.report-card h3 i { color: var(--navy); font-size: 18px; }
+
+/* Upload zone */
+.upload-zone {
+  border: 2px dashed var(--border-mid); border-radius: var(--radius-md);
+  padding: 18px 14px; text-align: center; cursor: pointer;
+  transition: var(--transition); background: var(--cream); position: relative;
+}
+.upload-zone:hover, .upload-zone.drag { border-color: var(--navy-light); background: var(--info-bg); }
+.upload-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.upload-zone i { font-size: 28px; color: var(--border-mid); display: block; margin-bottom: 6px; }
+.upload-zone .uz-label { font-size: 13px; color: var(--text-soft); }
+.upload-zone .uz-hint  { font-size: 11px; color: var(--border-mid); margin-top: 3px; }
+.upload-preview {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--info-bg); border: 1px solid #b3c9f0;
+  border-radius: var(--radius-md); padding: 10px 14px; margin-top: 8px;
+}
+.upload-preview i { color: var(--navy); font-size: 20px; flex-shrink: 0; }
+.upload-preview .up-name { flex: 1; font-size: 13px; font-weight: 500; color: var(--text-dark); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.upload-preview .up-size { font-size: 11px; color: var(--text-soft); }
+.upload-preview button { background: none; border: none; cursor: pointer; color: var(--danger); font-size: 16px; padding: 2px; }
+.uploading-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-top: 6px; }
+.uploading-bar-inner { height: 100%; background: var(--navy); border-radius: 2px; transition: width .3s; }
+
+/* File chip */
+.file-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--info-bg); color: var(--info);
+  font-size: 11px; padding: 3px 9px; border-radius: 99px;
+  border: 1px solid #b3c9f0; cursor: pointer;
+}
+.file-chip:hover { background: #d1dff9; }
+
+/* Empty state */
+.empty {
+  text-align: center; padding: 40px 20px;
+  color: var(--text-soft); font-size: 14px;
+}
+.empty i { font-size: 40px; color: var(--border-mid); display: block; margin-bottom: 10px; }
+
+/* ===================== SETUP SCREEN ===================== */
+.setup-screen {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 100vh; padding: 24px;
+  background: linear-gradient(135deg, #0d2b55 0%, #1a3f75 100%);
+}
+.setup-card {
+  background: var(--white); border-radius: var(--radius-xl);
+  padding: 36px 32px; max-width: 500px; width: 100%;
+  box-shadow: var(--shadow-lg);
+}
+.setup-logo {
+  text-align: center; margin-bottom: 28px;
+}
+.setup-logo .logo-icon {
+  width: 64px; height: 64px; border-radius: 20px;
+  background: linear-gradient(135deg, #c9963a, #e8b84b);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; margin: 0 auto 14px;
+}
+.setup-logo h1 { font-size: 20px; font-weight: 700; color: var(--text-dark); font-family: 'Noto Serif Thai', serif; }
+.setup-logo p { font-size: 13px; color: var(--text-soft); margin-top: 4px; }
+.setup-step {
+  display: flex; gap: 12px; margin-bottom: 14px;
+  background: var(--cream); border-radius: var(--radius-md); padding: 12px 14px;
+  border: 1px solid var(--border);
+}
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--navy); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.step-text { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+.step-text strong { color: var(--text-dark); display: block; }
+.step-text code { background: #e2e8f0; padding: 1px 5px; border-radius: 4px; font-size: 12px; color: var(--navy); }
+.url-input-wrap { margin-top: 18px; }
+.url-input-wrap label { font-size: 13px; font-weight: 600; color: var(--text-mid); display: block; margin-bottom: 6px; }
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.4); z-index: 49;
+  }
+  .sidebar-overlay.open { display: block; }
+  .main { margin-left: 0; }
+  .topbar { padding: 0 16px; }
+  .hamburger { display: flex; }
+  .page { padding: 16px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-row { grid-template-columns: 1fr; }
+  .modal { max-width: 100%; max-height: 95vh; }
+  .detail-body { padding: 16px; }
+  .topbar-title span { display: none; }
+  .toast-wrap { bottom: 16px; right: 16px; left: 16px; }
+  .toast { max-width: 100%; }
+}
+
+@media (max-width: 400px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat-card { padding: 14px; }
+  .stat-card-val { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== SETUP SCREEN ==================== -->
+<div id="setup-screen" class="setup-screen" style="display:none;">
+  <div class="setup-card">
+    <div class="setup-logo">
+      <div class="logo-icon">🏅</div>
+      <h1>ทะเบียนเครื่องราชอิสริยาภรณ์</h1>
+      <p>องค์การบริหารส่วนจังหวัดยโสธร</p>
+    </div>
+
+    <div class="setup-step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <strong>สร้าง Google Sheets ใหม่</strong>
+        เปิด Google Sheets และสร้างไฟล์ใหม่ว่างเปล่า
+      </div>
+    </div>
+    <div class="setup-step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <strong>เพิ่ม Apps Script</strong>
+        ไปที่ <code>Extensions → Apps Script</code> วางโค้ดจากไฟล์ <code>Code.gs</code>
+      </div>
+    </div>
+    <div class="setup-step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <strong>Deploy เป็น Web App</strong>
+        <code>Deploy → New deployment → Web app</code><br>
+        Execute as: <code>Me</code> | Access: <code>Anyone</code>
+      </div>
+    </div>
+    <div class="setup-step">
+      <div class="step-num">4</div>
+      <div class="step-text">
+        <strong>วาง URL ด้านล่าง</strong>
+        คัดลอก URL ที่ได้จาก Deploy มาวางในช่องนี้
+      </div>
+    </div>
+
+    <div class="url-input-wrap">
+      <label>Apps Script Web App URL</label>
+      <input type="url" id="setup-url" placeholder="https://script.google.com/macros/s/...">
+      <button class="btn btn-primary" style="margin-top:12px;width:100%;justify-content:center;" onclick="saveUrl()">
+        <i class="ti ti-plug-connected"></i> เชื่อมต่อระบบ
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== LOADING ==================== -->
+<div id="loading" class="loading-overlay">
+  <div class="spinner"></div>
+  <div class="loading-text">กำลังโหลดข้อมูล...</div>
+</div>
+
+<!-- ==================== MAIN APP ==================== -->
+<div id="app" style="display:none;" class="app-shell">
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">
+        <div class="brand-icon">🏅</div>
+        <div class="brand-text">
+          <div class="brand-title">อบจ.ยโสธร</div>
+          <div class="brand-sub">ทะเบียนเครื่องราชฯ</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-label">เมนูหลัก</div>
+        <button class="nav-item active" onclick="navigate('dashboard')">
+          <i class="ti ti-layout-dashboard"></i> ภาพรวม
+        </button>
+        <button class="nav-item" onclick="navigate('exec')">
+          <i class="ti ti-briefcase"></i> คณะผู้บริหาร
+          <span class="nav-badge" id="badge-exec">0</span>
+        </button>
+        <button class="nav-item" onclick="navigate('member')">
+          <i class="ti ti-users"></i> สมาชิกสภา
+          <span class="nav-badge" id="badge-member">0</span>
+        </button>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-label">จัดการ</div>
+        <button class="nav-item" onclick="navigate('eligible')">
+          <i class="ti ti-clock-check"></i> ผู้ครบกำหนดยื่น
+          <span class="nav-badge" id="badge-eligible" style="background:#e8b84b;"></span>
+        </button>
+        <button class="nav-item" onclick="navigate('report')">
+          <i class="ti ti-file-text"></i> รายงาน PDF
+        </button>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-label">ระบบ</div>
+        <button class="nav-item" onclick="navigate('settings')">
+          <i class="ti ti-settings"></i> ตั้งค่า
+        </button>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <small id="sync-status">เชื่อมต่อ Google Sheets แล้ว</small>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <button class="hamburger" onclick="toggleSidebar()">
+        <i class="ti ti-menu-2"></i>
+      </button>
+      <div class="topbar-title" id="topbar-title">ภาพรวม <span>อบจ.ยโสธร</span></div>
+      <button class="btn btn-gold btn-sm" onclick="openAddModal()">
+        <i class="ti ti-plus"></i> เพิ่มบุคคล
+      </button>
+      <button class="btn btn-outline btn-icon" onclick="loadData(true)" title="รีเฟรชข้อมูล">
+        <i class="ti ti-refresh"></i>
+      </button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="page active" id="page-dashboard">
+      <div class="stats-grid" id="stats-grid"></div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;" class="two-col-grid">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--text-mid);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+            <i class="ti ti-award" style="color:var(--navy)"></i> ครบกำหนดยื่นขอ ปีนี้
+          </div>
+          <div class="person-list" id="dash-eligible" style="max-height:320px;overflow-y:auto;"></div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--text-mid);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+            <i class="ti ti-clock" style="color:var(--navy)"></i> เพิ่มล่าสุด
+          </div>
+          <div class="person-list" id="dash-recent" style="max-height:320px;overflow-y:auto;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXEC -->
+    <div class="page" id="page-exec">
+      <div class="toolbar">
+        <div class="search-wrap">
+          <i class="ti ti-search"></i>
+          <input type="text" id="search-exec" placeholder="ค้นหาชื่อ ตำแหน่ง..." oninput="renderExec()">
+        </div>
+        <select id="filter-exec-rank" onchange="renderExec()" style="width:auto;min-width:180px;">
+          <option value="">ทุกชั้นเครื่องราช</option>
+        </select>
+      </div>
+      <div class="person-list" id="list-exec"></div>
+      <div id="detail-exec"></div>
+    </div>
+
+    <!-- MEMBER -->
+    <div class="page" id="page-member">
+      <div class="toolbar">
+        <div class="search-wrap">
+          <i class="ti ti-search"></i>
+          <input type="text" id="search-member" placeholder="ค้นหาชื่อ อำเภอ..." oninput="renderMember()">
+        </div>
+        <select id="filter-member-dist" onchange="renderMember()" style="width:auto;min-width:140px;">
+          <option value="">ทุกอำเภอ</option>
+        </select>
+        <select id="filter-member-rank" onchange="renderMember()" style="width:auto;min-width:180px;">
+          <option value="">ทุกชั้นเครื่องราช</option>
+        </select>
+      </div>
+      <div class="person-list" id="list-member"></div>
+      <div id="detail-member"></div>
+    </div>
+
+    <!-- ELIGIBLE -->
+    <div class="page" id="page-eligible">
+      <div style="background:var(--gold-pale);border:1px solid #e8c97a;border-radius:var(--radius-lg);padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:12px;">
+        <i class="ti ti-info-circle" style="font-size:22px;color:var(--gold);flex-shrink:0;"></i>
+        <div style="font-size:13px;color:var(--text-mid);">
+          แสดงรายชื่อผู้ที่ดำรงตำแหน่งครบ <strong>3 ปี</strong> และยังไม่เต็มชั้นเครื่องราช พร้อมชั้นที่สามารถยื่นขอได้
+        </div>
+      </div>
+      <div class="person-list" id="list-eligible"></div>
+    </div>
+
+    <!-- REPORT -->
+    <div class="page" id="page-report">
+
+      <!-- Tab switcher -->
+      <div style="display:flex;gap:6px;margin-bottom:18px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:5px;width:fit-content;">
+        <button id="rtab-group"  class="btn btn-primary btn-sm" onclick="switchReportTab('group')" style="border-radius:var(--radius-md);">
+          <i class="ti ti-table"></i> รายงานภาพรวม
+        </button>
+        <button id="rtab-person" class="btn btn-outline btn-sm" onclick="switchReportTab('person')" style="border-radius:var(--radius-md);">
+          <i class="ti ti-user"></i> รายงานรายบุคคล
+        </button>
+      </div>
+
+      <!-- GROUP REPORT -->
+      <div id="report-panel-group">
+        <div class="report-card">
+          <h3><i class="ti ti-table"></i> รายงานภาพรวม</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>ประเภทรายงาน</label>
+              <select id="report-type">
+                <option value="all">ทุกประเภท (ผู้บริหาร + สจ)</option>
+                <option value="exec">คณะผู้บริหาร</option>
+                <option value="member">สมาชิกสภา</option>
+                <option value="eligible">ผู้ครบกำหนดยื่นขอ</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>ปี พ.ศ.</label>
+              <input type="number" id="report-year" value="2568">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>หัวข้อรายงาน</label>
+            <input type="text" id="report-title" value="ทะเบียนประวัติการได้รับพระราชทานเครื่องราชอิสริยาภรณ์">
+          </div>
+          <div class="form-group">
+            <label>หน่วยงาน</label>
+            <input type="text" id="report-org" value="องค์การบริหารส่วนจังหวัดยโสธร">
+          </div>
+          <button class="btn btn-primary" onclick="generatePDF()">
+            <i class="ti ti-printer"></i> พิมพ์ / บันทึก PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- PERSON REPORT -->
+      <div id="report-panel-person" style="display:none;">
+        <div class="report-card">
+          <h3><i class="ti ti-user"></i> รายงานรายบุคคล</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>เลือกประเภท</label>
+              <select id="rp-type" onchange="renderPersonReportList()">
+                <option value="">ทั้งหมด</option>
+                <option value="exec">คณะผู้บริหาร</option>
+                <option value="member">สมาชิกสภา</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>ค้นหาชื่อ</label>
+              <div class="search-wrap">
+                <i class="ti ti-search"></i>
+                <input type="text" id="rp-search" placeholder="พิมพ์ชื่อ..." oninput="renderPersonReportList()">
+              </div>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--text-soft);margin-bottom:10px;">
+            <i class="ti ti-info-circle" style="vertical-align:-2px"></i>
+            กดปุ่ม <strong>พิมพ์</strong> ที่รายชื่อด้านล่าง เพื่อพิมพ์รายงานของแต่ละคน
+          </div>
+          <div id="rp-list" style="display:flex;flex-direction:column;gap:8px;max-height:520px;overflow-y:auto;padding-right:2px;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="page" id="page-settings">
+      <div class="report-card">
+        <h3><i class="ti ti-settings"></i> ตั้งค่าการเชื่อมต่อ</h3>
+        <div class="form-group">
+          <label>Apps Script Web App URL</label>
+          <input type="url" id="settings-url" placeholder="https://script.google.com/macros/s/...">
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="saveSettingsUrl()"><i class="ti ti-plug-connected"></i> บันทึก URL</button>
+          <button class="btn btn-outline" onclick="initRemote()"><i class="ti ti-database"></i> สร้าง Sheets</button>
+          <button class="btn btn-outline" onclick="loadData(true)"><i class="ti ti-refresh"></i> รีเฟรชข้อมูล</button>
+          <button class="btn btn-danger" onclick="clearUrl()"><i class="ti ti-unlink"></i> ยกเลิกการเชื่อมต่อ</button>
+        </div>
+        <div style="margin-top:14px;background:var(--cream);border-radius:var(--radius-md);padding:12px 14px;font-size:12px;color:var(--text-soft);">
+          <strong style="color:var(--text-mid);">หมายเหตุ:</strong> ข้อมูลทั้งหมดจัดเก็บใน Google Sheets ที่คุณเชื่อมต่อ ไฟล์ HTML นี้เป็นเพียง Frontend ไม่มีข้อมูลฝังอยู่
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="modal-root"></div>
+
+<!-- Toast -->
+<div class="toast-wrap" id="toast-wrap"></div>
+
+<style>
+@media (max-width: 640px) {
+  .two-col-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+<script>
+// ===================== CONFIG =====================
+const STORAGE_KEY = 'yasothon_api_url';
+const RANKS = [
+  'เบญจมาภรณ์มงกุฎไทย (บ.ม.)',
+  'เบญจมาภรณ์ช้างเผือก (บ.ช.)',
+  'จัตุรภรณ์มงกุฎไทย (จ.ม.)',
+  'จัตุรถาภรณ์ช้างเผือก (จ.ช.)',
+  'ตริตาภรณ์มงกุฎไทย (ต.ม.)',
+  'ตริตาภรณ์ช้างเผือก (ต.ช.)',
+  'ทวีติยาภรณ์มงกุฎไทย (ท.ม.)',
+  'ทวีติยาภรณ์ช้างเผือก (ท.ช.)',
+  'ประถมาภรณ์มงกุฎไทย (ป.ม.)',
+  'ประถมาภรณ์ช้างเผือก (ป.ช.)',
+  'มหาวชิรมงกุฎ (ม.ว.ม.)',
+  'มหาปรมาภรณ์ช้างเผือก (ม.ป.ช.)',
+];
+const NEXT_RANK = {
+  'เบญจมาภรณ์มงกุฎไทย (บ.ม.)':'เบญจมาภรณ์ช้างเผือก (บ.ช.)',
+  'เบญจมาภรณ์ช้างเผือก (บ.ช.)':'จัตุรภรณ์มงกุฎไทย (จ.ม.)',
+  'จัตุรภรณ์มงกุฎไทย (จ.ม.)':'จัตุรถาภรณ์ช้างเผือก (จ.ช.)',
+  'จัตุรถาภรณ์ช้างเผือก (จ.ช.)':'ตริตาภรณ์มงกุฎไทย (ต.ม.)',
+  'ตริตาภรณ์มงกุฎไทย (ต.ม.)':'ตริตาภรณ์ช้างเผือก (ต.ช.)',
+  'ตริตาภรณ์ช้างเผือก (ต.ช.)':'ทวีติยาภรณ์มงกุฎไทย (ท.ม.)',
+  'ทวีติยาภรณ์มงกุฎไทย (ท.ม.)':'ทวีติยาภรณ์ช้างเผือก (ท.ช.)',
+  'ทวีติยาภรณ์ช้างเผือก (ท.ช.)':'ประถมาภรณ์มงกุฎไทย (ป.ม.)',
+  'ประถมาภรณ์มงกุฎไทย (ป.ม.)':'ประถมาภรณ์ช้างเผือก (ป.ช.)',
+  'ประถมาภรณ์ช้างเผือก (ป.ช.)':'มหาวชิรมงกุฎ (ม.ว.ม.)',
+  'มหาวชิรมงกุฎ (ม.ว.ม.)':'มหาปรมาภรณ์ช้างเผือก (ม.ป.ช.)',
+};
+
+// ===================== STATE =====================
+let API_URL = '';
+let db = [];
+let currentPage = 'dashboard';
+let selectedPersonId = null;
+
+// ===================== FILE UPLOAD =====================
+// เก็บไฟล์ที่เลือกไว้ชั่วคราวก่อน submit  key = 'add' | 'edit'
+const selectedUploadFile = {};
+
+// เรียกเมื่อ input[type=file] เปลี่ยน
+function handleFileSelect(input, slot) {
+  const file = input.files && input.files[0];
+  if (!file) return;
+  if (!file.type.includes('pdf') && !file.name.toLowerCase().endsWith('.pdf')) {
+    toast('รองรับเฉพาะไฟล์ .pdf เท่านั้น', 'error'); input.value = ''; return;
+  }
+  if (file.size > 10 * 1024 * 1024) {
+    toast('ไฟล์ใหญ่เกิน 10 MB', 'error'); input.value = ''; return;
+  }
+  setUploadFile(file, slot);
+}
+
+// เรียกเมื่อ drag-and-drop
+function handleDrop(event, slot) {
+  event.preventDefault();
+  const zone = event.currentTarget;
+  zone.classList.remove('drag');
+  const file = event.dataTransfer.files && event.dataTransfer.files[0];
+  if (!file) return;
+  if (!file.type.includes('pdf') && !file.name.toLowerCase().endsWith('.pdf')) {
+    toast('รองรับเฉพาะไฟล์ .pdf เท่านั้น', 'error'); return;
+  }
+  if (file.size > 10 * 1024 * 1024) {
+    toast('ไฟล์ใหญ่เกิน 10 MB', 'error'); return;
+  }
+  setUploadFile(file, slot);
+}
+
+// บันทึกไฟล์ลง state และแสดง preview
+function setUploadFile(file, slot) {
+  selectedUploadFile[slot] = file;
+  // ซ่อน drop zone แสดง preview
+  const zone    = document.getElementById('uz-' + slot);
+  const preview = document.getElementById('uz-preview-' + slot);
+  const nameEl  = document.getElementById('uz-name-' + slot);
+  const sizeEl  = document.getElementById('uz-size-' + slot);
+  if (zone)    zone.style.display    = 'none';
+  if (preview) preview.style.display = 'flex';
+  if (nameEl)  nameEl.textContent    = file.name;
+  if (sizeEl)  sizeEl.textContent    = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+}
+
+// ล้างไฟล์ที่เลือก
+function clearFile(slot) {
+  delete selectedUploadFile[slot];
+  const zone    = document.getElementById('uz-' + slot);
+  const preview = document.getElementById('uz-preview-' + slot);
+  const input   = document.getElementById(slot === 'add' ? 'm-file-input' : 'm-file-input-edit');
+  if (zone)    zone.style.display    = '';
+  if (preview) preview.style.display = 'none';
+  if (input)   input.value           = '';
+}
+
+// แปลง File object → base64 string (ไม่รวม data:... prefix)
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload  = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = () => reject(new Error('อ่านไฟล์ไม่สำเร็จ'));
+    reader.readAsDataURL(file);
+  });
+}
+
+// ===================== INIT =====================
+window.addEventListener('DOMContentLoaded', () => {
+  API_URL = localStorage.getItem(STORAGE_KEY) || '';
+  if (!API_URL) { showSetup(); return; }
+  loadData(false);
+});
+
+function showSetup() {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('setup-screen').style.display = 'flex';
+}
+
+function saveUrl() {
+  const url = document.getElementById('setup-url').value.trim();
+  if (!url.startsWith('https://script.google.com')) { toast('กรุณาใส่ URL ที่ถูกต้อง', 'error'); return; }
+  localStorage.setItem(STORAGE_KEY, url);
+  API_URL = url;
+  document.getElementById('setup-screen').style.display = 'none';
+  document.getElementById('loading').style.display = 'flex';
+  initRemote().then(() => loadData(false));
+}
+
+async function initRemote() {
+  try {
+    await api({ action: 'init' });
+    toast('สร้าง Sheets สำเร็จ', 'success');
+  } catch(e) { toast('เกิดข้อผิดพลาด: ' + e.message, 'error'); }
+}
+
+// ===================== API =====================
+async function api(payload) {
+  const res = await fetch(API_URL, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: { 'Content-Type': 'text/plain' },
+  });
+  const data = await res.json();
+  if (!data.ok) throw new Error(data.error || 'API Error');
+  return data;
+}
+
+async function loadData(showToast = false) {
+  document.getElementById('loading').style.display = 'flex';
+  try {
+    const res = await api({ action: 'getAll' });
+    db = res.data || [];
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+    renderAll();
+    if (showToast) toast('โหลดข้อมูลสำเร็จ', 'success');
+  } catch(e) {
+    document.getElementById('loading').style.display = 'none';
+    toast('โหลดข้อมูลไม่สำเร็จ: ' + e.message, 'error');
+    if (!document.getElementById('app').style.display || document.getElementById('app').style.display === 'none') {
+      showSetup();
+    }
+  }
+}
+
+// ===================== NAVIGATION =====================
+function navigate(page) {
+  currentPage = page;
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  document.querySelector(`[onclick="navigate('${page}')"]`).classList.add('active');
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const titles = { dashboard:'ภาพรวม', exec:'คณะผู้บริหาร', member:'สมาชิกสภา', eligible:'ผู้ครบกำหนดยื่นขอ', report:'รายงาน PDF', settings:'ตั้งค่า' };
+  document.getElementById('topbar-title').innerHTML = titles[page] + '<span>อบจ.ยโสธร</span>';
+  closeSidebar();
+  selectedPersonId = null;
+  if (page === 'exec') { renderExec(); document.getElementById('detail-exec').innerHTML = ''; }
+  if (page === 'member') { renderMember(); document.getElementById('detail-member').innerHTML = ''; }
+  if (page === 'eligible') renderEligible();
+  if (page === 'settings') document.getElementById('settings-url').value = API_URL;
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebar-overlay').classList.toggle('open');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar-overlay').classList.remove('open');
+}
+
+// ===================== UTILS =====================
+
+/**
+ * แปลง raw date string (ทุกรูปแบบ) → { y, m, d } วันแบบ local
+ * รองรับ: "2020-12-20", "2020-12-19T17:00:00.000Z", "2020-12-20T00:00:00+07:00"
+ * หลักการ: ถ้าเป็น ISO มี T ให้ดึงแค่ส่วน YYYY-MM-DD แล้ว parse เป็น local
+ * เพื่อหลีกเลี่ยง UTC offset ทำให้วันเคลื่อน
+ */
+function parseLocalDate(raw) {
+  if (!raw || raw === '-' || raw === '') return null;
+  const s = String(raw).trim();
+  // ถ้ามี T (ISO datetime) → ตัดเฉพาะ date part แล้ว parse local
+  const datePart = s.includes('T') ? s.split('T')[0] : s;
+  // datePart ควรเป็น YYYY-MM-DD แล้ว
+  const parts = datePart.split('-');
+  if (parts.length === 3) {
+    const y = parseInt(parts[0], 10);
+    const m = parseInt(parts[1], 10) - 1; // 0-based
+    const d = parseInt(parts[2], 10);
+    if (!isNaN(y) && !isNaN(m) && !isNaN(d)) return new Date(y, m, d);
+  }
+  // fallback
+  const fallback = new Date(s);
+  return isNaN(fallback) ? null : fallback;
+}
+
+function calcDiff(s, e) {
+  if (!s) return null;
+  const sd = parseLocalDate(s);
+  const ed = e ? parseLocalDate(e) : new Date();
+  if (!sd || !ed) return null;
+  let y = ed.getFullYear() - sd.getFullYear();
+  let m = ed.getMonth() - sd.getMonth();
+  let d = ed.getDate() - sd.getDate();
+  if (d < 0) { m--; d += new Date(ed.getFullYear(), ed.getMonth(), 0).getDate(); }
+  if (m < 0) { y--; m += 12; }
+  return { y, m, d };
+}
+
+function diffStr(diff, short = false) {
+  if (!diff) return '-';
+  if (short) return `${diff.y} ปี ${diff.m} เดือน`;
+  let r = '';
+  if (diff.y) r += diff.y + ' ปี ';
+  if (diff.m) r += diff.m + ' เดือน ';
+  if (diff.d) r += diff.d + ' วัน';
+  return r.trim() || '0 วัน';
+}
+
+// แปลงวันที่ทุกรูปแบบ → วัน เดือน พ.ศ.  (ใช้ parseLocalDate เสมอ)
+function formatThaiDate(raw, short = false) {
+  if (!raw || raw === '-' || raw === '') return '-';
+  const d = parseLocalDate(raw);
+  if (!d) return String(raw);
+  const buddhistYear = d.getFullYear() + 543;
+  const MONTHS = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน',
+                  'กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+  if (short) {
+    const dd = String(d.getDate()).padStart(2, '0');
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    return `${dd}/${mm}/${buddhistYear}`;
+  }
+  return `${d.getDate()} ${MONTHS[d.getMonth()]} ${buddhistYear}`;
+}
+
+// แปลง raw → YYYY-MM-DD (ค.ศ.) สำหรับ input[type=date]
+function isoToInputDate(raw) {
+  if (!raw || raw === '-' || raw === '') return '';
+  const d = parseLocalDate(raw);
+  if (!d) return '';
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+function totalTenureDays(p) {
+  let total = 0;
+  (p.tenures || []).forEach(t => {
+    const s = parseLocalDate(t.startDate);
+    const e = t.endDate ? parseLocalDate(t.endDate) : new Date();
+    if (s && e) total += Math.max(0, Math.floor((e - s) / 86400000));
+  });
+  return total;
+}
+
+function getLatestRank(p) {
+  const hists = (p.histories || []);
+  if (!hists.length) return null;
+  return hists[hists.length - 1].rank || null;
+}
+
+function isFull(p) {
+  const hists = p.histories || [];
+  if (!hists.length) return false;
+  return hists[hists.length - 1].status === 'เต็มชั้นเครื่องราชย์แล้ว';
+}
+
+function initials(p) { return (p.firstName || '?')[0]; }
+
+function isEligible(p) {
+  return !isFull(p) && totalTenureDays(p) >= 365 * 3;
+}
+
+// ===================== RENDER ALL =====================
+function renderAll() {
+  renderStats();
+  renderDashboard();
+  populateFilters();
+  if (currentPage === 'exec') renderExec();
+  if (currentPage === 'member') renderMember();
+  if (currentPage === 'eligible') renderEligible();
+}
+
+function renderStats() {
+  const execs = db.filter(p => p.type === 'exec').length;
+  const members = db.filter(p => p.type === 'member').length;
+  const withRank = db.filter(p => (p.histories || []).length > 0).length;
+  const eligible = db.filter(isEligible).length;
+
+  document.getElementById('badge-exec').textContent = execs;
+  document.getElementById('badge-member').textContent = members;
+  if (eligible > 0) { document.getElementById('badge-eligible').textContent = eligible; document.getElementById('badge-eligible').style.display = ''; }
+  else document.getElementById('badge-eligible').style.display = 'none';
+
+  document.getElementById('stats-grid').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:var(--info-bg);color:var(--navy)"><i class="ti ti-briefcase" style="font-size:20px"></i></div>
+      <div class="stat-card-val">${execs}</div>
+      <div class="stat-card-label">คณะผู้บริหาร</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:var(--success-bg);color:var(--success)"><i class="ti ti-users" style="font-size:20px"></i></div>
+      <div class="stat-card-val">${members}</div>
+      <div class="stat-card-label">สมาชิกสภา</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:var(--gold-pale);color:#92600a"><i class="ti ti-award" style="font-size:20px"></i></div>
+      <div class="stat-card-val">${withRank}</div>
+      <div class="stat-card-label">มีประวัติเครื่องราช</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-icon" style="background:var(--warn-bg);color:var(--warn)"><i class="ti ti-clock-check" style="font-size:20px"></i></div>
+      <div class="stat-card-val">${eligible}</div>
+      <div class="stat-card-label">ครบกำหนดยื่นขอ</div>
+    </div>
+  `;
+}
+
+function renderDashboard() {
+  const eligible = db.filter(isEligible).slice(0, 5);
+  const recent = [...db].slice(-5).reverse();
+  document.getElementById('dash-eligible').innerHTML = eligible.length ? eligible.map(p => miniCard(p)).join('') : '<div class="empty"><i class="ti ti-check"></i>ไม่มีผู้ที่ครบกำหนด</div>';
+  document.getElementById('dash-recent').innerHTML = recent.length ? recent.map(p => miniCard(p)).join('') : '<div class="empty"><i class="ti ti-users"></i>ยังไม่มีข้อมูล</div>';
+}
+
+function miniCard(p) {
+  const latest = getLatestRank(p);
+  const days = totalTenureDays(p);
+  const ty = Math.floor(days/365), tm = Math.floor((days%365)/30);
+  return `<div class="person-card" onclick="quickSelect('${p.type}','${p.id}')">
+    <div class="person-card-top">
+      <div class="avatar avatar-${p.type}">${initials(p)}</div>
+      <div class="person-info">
+        <div class="person-name">${p.prefix}${p.firstName} ${p.lastName}</div>
+        <div class="person-pos">${p.position}${p.district ? ' · ' + p.district : ''}</div>
+      </div>
+    </div>
+    <div class="person-badges" style="margin-top:8px;">
+      ${latest ? '<span class="badge badge-gold">'+latest+'</span>' : '<span class="badge badge-gray">ยังไม่ได้รับ</span>'}
+      <span class="badge badge-gray">${ty}ปี ${tm}เดือน</span>
+    </div>
+  </div>`;
+}
+
+function quickSelect(type, id) {
+  navigate(type === 'exec' ? 'exec' : 'member');
+  setTimeout(() => selectPerson(id), 50);
+}
+
+function populateFilters() {
+  const districts = [...new Set(db.filter(p => p.district).map(p => p.district))].sort();
+  document.getElementById('filter-member-dist').innerHTML = '<option value="">ทุกอำเภอ</option>' + districts.map(d => `<option>${d}</option>`).join('');
+  [document.getElementById('filter-exec-rank'), document.getElementById('filter-member-rank')].forEach(sel => {
+    if (sel) sel.innerHTML = '<option value="">ทุกชั้นเครื่องราช</option>' + RANKS.map(r => `<option>${r}</option>`).join('');
+  });
+}
+
+function renderExec() {
+  const q = document.getElementById('search-exec').value.toLowerCase();
+  const rank = document.getElementById('filter-exec-rank').value;
+  let persons = db.filter(p => p.type === 'exec');
+  if (q) persons = persons.filter(p => (p.firstName+p.lastName+p.position).toLowerCase().includes(q));
+  if (rank) persons = persons.filter(p => (p.histories||[]).some(h => h.rank === rank));
+  document.getElementById('list-exec').innerHTML = persons.length ? persons.map(p => personCard(p, 'exec')).join('') : '<div class="empty"><i class="ti ti-users"></i>ไม่พบข้อมูล</div>';
+}
+
+function renderMember() {
+  const q = document.getElementById('search-member').value.toLowerCase();
+  const dist = document.getElementById('filter-member-dist').value;
+  const rank = document.getElementById('filter-member-rank').value;
+  let persons = db.filter(p => p.type === 'member');
+  if (q) persons = persons.filter(p => (p.firstName+p.lastName+p.district+'').toLowerCase().includes(q));
+  if (dist) persons = persons.filter(p => p.district === dist);
+  if (rank) persons = persons.filter(p => (p.histories||[]).some(h => h.rank === rank));
+  document.getElementById('list-member').innerHTML = persons.length ? persons.map(p => personCard(p, 'member')).join('') : '<div class="empty"><i class="ti ti-users"></i>ไม่พบข้อมูล</div>';
+}
+
+function renderEligible() {
+  const eligible = db.filter(isEligible);
+  const container = document.getElementById('list-eligible');
+  if (!eligible.length) { container.innerHTML = '<div class="empty"><i class="ti ti-check"></i>ไม่มีผู้ที่ครบกำหนดยื่นขอ</div>'; return; }
+  container.innerHTML = eligible.map(p => {
+    const latest = getLatestRank(p);
+    const next = latest ? (NEXT_RANK[latest] || null) : 'เบญจมาภรณ์มงกุฎไทย (บ.ม.)';
+    const days = totalTenureDays(p);
+    return `<div class="person-card" onclick="quickSelect('${p.type}','${p.id}')">
+      <div class="person-card-top">
+        <div class="avatar avatar-${p.type}">${initials(p)}</div>
+        <div class="person-info">
+          <div class="person-name">${p.prefix}${p.firstName} ${p.lastName}</div>
+          <div class="person-pos">${p.position}${p.district ? ' · ' + p.district : ''}</div>
+        </div>
+      </div>
+      <div class="person-badges" style="margin-top:8px;">
+        <span class="badge badge-gold">ปัจจุบัน: ${latest || '-'}</span>
+        ${next ? '<span class="badge badge-green">ขอได้: '+next+'</span>' : ''}
+        <span class="badge badge-gray">${Math.floor(days/365)} ปี ${Math.floor((days%365)/30)} เดือน</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function personCard(p, context) {
+  const latest = getLatestRank(p);
+  const fullRank = isFull(p);
+  const days = totalTenureDays(p);
+  const ty = Math.floor(days/365), tm = Math.floor((days%365)/30);
+  const active = selectedPersonId == p.id;
+  return `<div class="person-card ${active?'active':''}" onclick="selectPerson('${p.id}')">
+    <div class="person-card-top">
+      <div class="avatar avatar-${p.type}">${initials(p)}</div>
+      <div class="person-info">
+        <div class="person-name">${p.prefix}${p.firstName} ${p.lastName}</div>
+        <div class="person-pos">${p.position}${p.district ? ' · อ.' + p.district + (p.zone ? ' เขต '+p.zone : '') : ''}</div>
+      </div>
+      <div class="person-actions">
+        <button class="btn btn-outline btn-icon btn-sm" onclick="event.stopPropagation();openEditModal('${p.id}')" title="แก้ไข"><i class="ti ti-edit"></i></button>
+        <button class="btn btn-danger btn-icon btn-sm" onclick="event.stopPropagation();deletePerson('${p.id}')" title="ลบ"><i class="ti ti-trash"></i></button>
+      </div>
+    </div>
+    <div class="person-badges">
+      ${fullRank ? '<span class="badge badge-orange">เต็มชั้นเครื่องราชย์แล้ว</span>' : latest ? '<span class="badge badge-gold">'+latest+'</span>' : '<span class="badge badge-gray">ยังไม่ได้รับ</span>'}
+      ${isEligible(p) ? '<span class="badge badge-green"><i class="ti ti-check" style="font-size:11px"></i> ครบกำหนดยื่น</span>' : ''}
+      <span class="badge badge-gray">${ty} ปี ${tm} เดือน</span>
+    </div>
+  </div>`;
+}
+
+// ===================== DETAIL =====================
+function selectPerson(id) {
+  selectedPersonId = id;
+  const p = db.find(x => String(x.id) === String(id));
+  if (!p) return;
+  const context = p.type === 'exec' ? 'exec' : 'member';
+  if (context === 'exec') { renderExec(); renderDetailIn('detail-exec', p); }
+  else { renderMember(); renderDetailIn('detail-member', p); }
+}
+
+function renderDetailIn(containerId, p) {
+  const container = document.getElementById(containerId);
+  const today = new Date().toISOString().split('T')[0];
+  const days = totalTenureDays(p);
+  const ty = Math.floor(days/365), tm = Math.floor((days%365)/30), td = days % 30;
+  const latest = getLatestRank(p);
+  const next = latest ? (NEXT_RANK[latest] || null) : 'เบญจมาภรณ์มงกุฎไทย (บ.ม.)';
+  const full = isFull(p);
+  const elig = isEligible(p);
+
+  const tenureRows = (p.tenures || []).map(t => {
+    const diff = calcDiff(t.startDate, t.endDate || today);
+    return `<tr>
+      <td>${t.position || p.position}</td>
+      <td>${formatThaiDate(t.startDate)}</td>
+      <td>${t.endDate ? formatThaiDate(t.endDate) : '<span style="color:var(--success);font-size:11px;font-weight:600">ปัจจุบัน</span>'}</td>
+      <td><strong>${diffStr(diff, true)}</strong></td>
+      <td><button class="btn btn-outline btn-icon btn-sm" onclick="openEditTenureModal('${p.id}','${t.id}')" title="แก้ไข"><i class="ti ti-edit"></i></button>
+          <button class="btn btn-danger btn-icon btn-sm" onclick="deleteTenure('${p.id}','${t.id}')" title="ลบ"><i class="ti ti-trash"></i></button></td>
+    </tr>`;
+  }).join('') || `<tr><td colspan="5" class="empty">ยังไม่มีข้อมูลวาระ</td></tr>`;
+
+  const histRows = (p.histories || []).map(h => {
+    // ไฟล์: คลิกเปิด Google Drive ได้จริง
+    const fileUrl  = h.announceFileUrl  || h.announceFile || '';
+    const fileName = h.announceFileName || h.announceFile || '';
+    const fileCell = fileUrl && fileUrl.startsWith('http')
+      ? '<a href="' + fileUrl + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;background:var(--info-bg);border:1px solid #b3c9f0;color:var(--navy);font-size:11px;padding:3px 9px;border-radius:99px;text-decoration:none;font-weight:500;"><i class=\"ti ti-external-link\" style=\"font-size:12px\"></i>' + (fileName || 'เปิดไฟล์') + '</a>'
+      : fileName ? '<span style="font-size:12px;color:var(--text-soft)">' + fileName + '</span>'
+      : '<span style="color:var(--border-mid);font-size:12px">-</span>';
+    return `<tr>
+    <td><span class="badge badge-gold">${h.rank || '-'}</span></td>
+    <td>${formatThaiDate(h.receiveDate)}</td>
+    <td>${formatThaiDate(h.gazetteDate)}</td>
+    <td>${h.status || ''}</td>
+    <td>${fileCell}</td>
+    <td>${h.note || ''}</td>
+    <td><button class="btn btn-outline btn-icon btn-sm" onclick="openEditHistoryModal('${p.id}','${h.id}')" title="แก้ไข"><i class="ti ti-edit"></i></button>
+        <button class="btn btn-danger btn-icon btn-sm" onclick="deleteHistory('${p.id}','${h.id}')" title="ลบ"><i class="ti ti-trash"></i></button></td>
+  </tr>`;
+  }).join('') || `<tr><td colspan="7" class="empty">ยังไม่มีประวัติเครื่องราช</td></tr>`;
+
+  container.innerHTML = `
+  <div class="detail-panel">
+    <div class="detail-header">
+      <div class="avatar ${p.type === 'exec' ? 'avatar-exec' : 'avatar-member'}" style="width:48px;height:48px;font-size:20px">${initials(p)}</div>
+      <div class="detail-header-info">
+        <div class="detail-header-name">${p.prefix}${p.firstName} ${p.lastName}</div>
+        <div class="detail-header-pos">${p.position}${p.district ? ' · อ.' + p.district + (p.zone ? ' เขต '+p.zone : '') : ''}</div>
+        ${p.orderNo ? '<div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:2px;">คำสั่ง: '+p.orderNo+'</div>' : ''}
+      </div>
+      <div style="display:flex;gap:6px;flex-shrink:0;">
+        <button class="btn btn-sm" onclick="generatePersonPDF('${p.id}')" style="color:#fff;border-color:rgba(255,255,255,.3);background:rgba(201,150,58,.2);gap:5px;" title="พิมพ์รายงานรายบุคคล">
+          <i class="ti ti-printer" style="font-size:15px"></i>
+          <span style="font-size:12px">พิมพ์รายงาน</span>
+        </button>
+        <button class="btn btn-outline btn-icon" onclick="document.getElementById('${containerId}').innerHTML='';selectedPersonId=null;" style="color:#fff;border-color:rgba(255,255,255,.3);background:transparent;" title="ปิด"><i class="ti ti-x"></i></button>
+      </div>
+    </div>
+
+    <div class="detail-body">
+      <!-- Tenure -->
+      <div class="detail-section">
+        <div class="section-head">
+          <div class="section-title"><i class="ti ti-calendar"></i> วาระดำรงตำแหน่ง</div>
+          <button class="btn btn-outline btn-sm" onclick="openAddTenureModal('${p.id}')"><i class="ti ti-plus"></i> เพิ่มวาระ</button>
+        </div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>ตำแหน่ง</th><th>วันเริ่ม</th><th>วันสิ้นสุด</th><th>รวม</th><th></th></tr></thead>
+            <tbody>${tenureRows}</tbody>
+          </table>
+        </div>
+        <div class="tenure-summary">
+          <div class="tenure-summary-row"><span class="label">รวมระยะเวลาทั้งหมด</span><span></span></div>
+          <div class="tenure-summary-row tenure-summary-total"><span>${ty} ปี ${tm} เดือน ${td} วัน</span><span></span></div>
+        </div>
+        ${elig && next ? `<div class="eligible-box"><i class="ti ti-award"></i><div class="eligible-box-text"><strong>ครบกำหนดยื่นขอเครื่องราช</strong><span>ชั้นที่ขอได้: ${next}</span></div></div>` : ''}
+        ${full ? `<div class="eligible-box" style="background:var(--warn-bg);border-color:#fcd47a;"><i class="ti ti-check-circle" style="color:var(--warn)"></i><div class="eligible-box-text"><strong style="color:var(--warn)">เต็มชั้นเครื่องราชย์แล้ว</strong></div></div>` : ''}
+      </div>
+
+      <!-- Histories -->
+      <div class="detail-section">
+        <div class="section-head">
+          <div class="section-title"><i class="ti ti-award"></i> ประวัติการได้รับเครื่องราช</div>
+          <button class="btn btn-outline btn-sm" onclick="openAddHistoryModal('${p.id}')"><i class="ti ti-plus"></i> เพิ่มประวัติ</button>
+        </div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>ชั้นเครื่องราช</th><th>วันที่ได้รับ</th><th>ราชกิจจา</th><th>สถานะ</th><th>ไฟล์ประกาศ</th><th>หมายเหตุ</th><th></th></tr></thead>
+            <tbody>${histRows}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>`;
+  container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ===================== CRUD =====================
+async function deletePerson(id) {
+  if (!confirm('ยืนยันลบข้อมูลบุคคลนี้? (จะลบประวัติทั้งหมดด้วย)')) return;
+  try {
+    await api({ action: 'deletePerson', payload: { id } });
+    toast('ลบข้อมูลสำเร็จ', 'success');
+    db = db.filter(p => String(p.id) !== String(id));
+    if (String(selectedPersonId) === String(id)) selectedPersonId = null;
+    renderAll();
+    if (currentPage === 'exec') { renderExec(); document.getElementById('detail-exec').innerHTML = ''; }
+    if (currentPage === 'member') { renderMember(); document.getElementById('detail-member').innerHTML = ''; }
+  } catch(e) { toast('เกิดข้อผิดพลาด: ' + e.message, 'error'); }
+}
+
+async function deleteHistory(personId, histId) {
+  if (!confirm('ยืนยันลบประวัติเครื่องราชนี้?')) return;
+  try {
+    await api({ action: 'deleteHistory', payload: { id: histId } });
+    const p = db.find(x => String(x.id) === String(personId));
+    if (p) p.histories = (p.histories || []).filter(h => String(h.id) !== String(histId));
+    toast('ลบประวัติสำเร็จ', 'success');
+    renderAll(); selectPerson(personId);
+  } catch(e) { toast('เกิดข้อผิดพลาด', 'error'); }
+}
+
+async function deleteTenure(personId, tenureId) {
+  if (!confirm('ยืนยันลบวาระนี้?')) return;
+  try {
+    await api({ action: 'deleteTenure', payload: { id: tenureId } });
+    const p = db.find(x => String(x.id) === String(personId));
+    if (p) p.tenures = (p.tenures || []).filter(t => String(t.id) !== String(tenureId));
+    toast('ลบวาระสำเร็จ', 'success');
+    renderAll(); selectPerson(personId);
+  } catch(e) { toast('เกิดข้อผิดพลาด', 'error'); }
+}
+
+// ===================== MODALS =====================
+function showModal(html) { document.getElementById('modal-root').innerHTML = html; }
+function closeModal() { document.getElementById('modal-root').innerHTML = ''; }
+
+function modalWrap(icon, title, body, footer) {
+  return `<div class="modal-backdrop" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-header-icon"><i class="ti ti-${icon}"></i></div>
+        <h2>${title}</h2>
+        <button class="btn btn-outline btn-icon btn-sm" onclick="closeModal()"><i class="ti ti-x"></i></button>
+      </div>
+      <div class="modal-body">${body}</div>
+      <div class="modal-footer">${footer}</div>
+    </div></div>`;
+}
+
+function rankOptions(sel = '') { return RANKS.map(r => `<option ${r===sel?'selected':''}>${r}</option>`).join(''); }
+
+// Add Person
+function openAddModal() {
+  showModal(modalWrap('user-plus','เพิ่มบุคคลใหม่',`
+    <div class="form-row">
+      <div class="form-group"><label>ประเภท</label><select id="m-type"><option value="exec">คณะผู้บริหาร</option><option value="member">สมาชิกสภา</option></select></div>
+      <div class="form-group"><label>คำนำหน้า</label><input id="m-prefix" value="นาย"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>ชื่อ *</label><input id="m-first" placeholder="ชื่อ"></div>
+      <div class="form-group"><label>นามสกุล *</label><input id="m-last" placeholder="นามสกุล"></div>
+    </div>
+    <div class="form-group"><label>ตำแหน่ง</label><input id="m-pos" placeholder="เช่น สมาชิกสภา อบจ.ยโสธร"></div>
+    <div class="form-row">
+      <div class="form-group"><label>อำเภอ</label><input id="m-dist" placeholder="อำเภอ"></div>
+      <div class="form-group"><label>เขตที่</label><input id="m-zone" placeholder="เช่น 1"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>วันรับตำแหน่ง</label><input type="date" id="m-start"></div>
+      <div class="form-group"><label>เลขที่คำสั่ง</label><input id="m-order"></div>
+    </div>`,
+    `<button class="btn btn-outline" onclick="closeModal()">ยกเลิก</button>
+     <button class="btn btn-primary" onclick="submitAddPerson()"><i class="ti ti-check"></i> บันทึก</button>`
+  ));
+}
+
+async function submitAddPerson() {
+  const payload = {
+    type: document.getElementById('m-type').value,
+    prefix: document.getElementById('m-prefix').value,
+    firstName: document.getElementById('m-first').value.trim(),
+    lastName: document.getElementById('m-last').value.trim(),
+    position: document.getElementById('m-pos').value,
+    district: document.getElementById('m-dist').value,
+    zone: document.getElementById('m-zone').value,
+    startDate: document.getElementById('m-start').value,
+    orderNo: document.getElementById('m-order').value,
+  };
+  if (!payload.firstName) { toast('กรุณาระบุชื่อ', 'error'); return; }
+  try {
+    const res = await api({ action: 'addPerson', payload });
+    payload.id = res.id; payload.histories = []; payload.tenures = [];
+    db.push(payload);
+    closeModal(); toast('เพิ่มข้อมูลสำเร็จ', 'success');
+    renderAll();
+    navigate(payload.type === 'exec' ? 'exec' : 'member');
+  } catch(e) { toast('เกิดข้อผิดพลาด: ' + e.message, 'error'); }
+}
+
+// Edit Person
+function openEditModal(id) {
+  const p = db.find(x => String(x.id) === String(id));
+  if (!p) return;
+  showModal(modalWrap('edit','แก้ไขข้อมูล',`
+    <input type="hidden" id="m-id" value="${p.id}">
+    <div class="form-row">
+      <div class="form-group"><label>ประเภท</label><select id="m-type"><option value="exec" ${p.type==='exec'?'selected':''}>คณะผู้บริหาร</option><option value="member" ${p.type==='member'?'selected':''}>สมาชิกสภา</option></select></div>
+      <div class="form-group"><label>คำนำหน้า</label><input id="m-prefix" value="${p.prefix||''}"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>ชื่อ</label><input id="m-first" value="${p.firstName||''}"></div>
+      <div class="form-group"><label>นามสกุล</label><input id="m-last" value="${p.lastName||''}"></div>
+    </div>
+    <div class="form-group"><label>ตำแหน่ง</label><input id="m-pos" value="${p.position||''}"></div>
+    <div class="form-row">
+      <div class="form-group"><label>อำเภอ</label><input id="m-dist" value="${p.district||''}"></div>
+      <div class="form-group"><label>เขตที่</label><input id="m-zone" value="${p.zone||''}"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>วันรับตำแหน่ง</label><input type="date" id="m-start" value="${isoToInputDate(p.startDate)}"></div>
+      <div class="form-group"><label>เลขที่คำสั่ง</label><input id="m-order" value="${p.orderNo||''}"></div>
+    </div>`,
+    `<button class="btn btn-outline" onclick="closeModal()">ยกเลิก</button>
+     <button class="btn btn-primary" onclick="submitEditPerson()"><i class="ti ti-check"></i> บันทึก</button>`
+  ));
+}
+
+async function submitEditPerson() {
+  const id = document.getElementById('m-id').value;
+  const payload = {
+    id, type: document.getElementById('m-type').value,
+    prefix: document.getElementById('m-prefix').value,
+    firstName: document.getElementById('m-first').value.trim(),
+    lastName: document.getElementById('m-last').value.trim(),
+    position: document.getElementById('m-pos').value,
+    district: document.getElementById('m-dist').value,
+    zone: document.getElementById('m-zone').value,
+    startDate: document.getElementById('m-start').value,
+    orderNo: document.getElementById('m-order').value,
+  };
+  try {
+    await api({ action: 'editPerson', payload });
+    const p = db.find(x => String(x.id) === String(id));
+    if (p) Object.assign(p, payload);
+    closeModal(); toast('บันทึกสำเร็จ', 'success');
+    renderAll(); if (selectedPersonId) selectPerson(selectedPersonId);
+  } catch(e) { toast('เกิดข้อผิดพลาด', 'error'); }
+}
+
+// Add History
+function openAddHistoryModal(personId) {
+  showModal(modalWrap('award','เพิ่มประวัติเครื่องราช',`
+    <input type="hidden" id="m-pid" value="${personId}">
+    <div class="form-group"><label>ชั้นเครื่องราช</label><select id="m-rank">${rankOptions()}</select></div>
+    <div class="form-row">
+      <div class="form-group"><label>วันที่ได้รับ</label><input type="date" id="m-rdate"></div>
+      <div class="form-group"><label>วันประกาศราชกิจจา</label><input type="date" id="m-gdate"></div>
+    </div>
+    <div class="form-group"><label>สถานะ</label><input id="m-status" placeholder="เช่น ได้รับแล้ว ปี 67, รอประกาศ"></div>
+    <div class="form-group">
+      <label>แนบไฟล์ประกาศ PDF</label>
+      <div class="upload-zone" id="uz-add"
+           ondragover="event.preventDefault();this.classList.add('drag')"
+           ondragleave="this.classList.remove('drag')"
+           ondrop="handleDrop(event,'add')">
+        <input type="file" accept=".pdf,application/pdf" id="m-file-input" onchange="handleFileSelect(this,'add')">
+        <i class="ti ti-file-upload"></i>
+        <div class="uz-label">คลิกหรือลากไฟล์ PDF มาวางที่นี่</div>
+        <div class="uz-hint">รองรับไฟล์ .pdf ขนาดไม่เกิน 10 MB</div>
+      </div>
+      <div id="uz-preview-add" style="display:none" class="upload-preview">
+        <i class="ti ti-file-text"></i>
+        <div>
+          <div class="up-name" id="uz-name-add"></div>
+          <div class="up-size" id="uz-size-add"></div>
+        </div>
+        <button onclick="clearFile('add')" title="ลบไฟล์">✕</button>
+      </div>
+    </div>
+    <div class="form-group"><label>หมายเหตุ</label><textarea id="m-note" rows="2" placeholder="เช่น ประจำปี 2557 เล่ม 132 ตอนที่ 17"></textarea></div>`,
+    `<button class="btn btn-outline" onclick="closeModal()">ยกเลิก</button>
+     <button class="btn btn-primary" id="btn-save-hist" onclick="submitAddHistory()"><i class="ti ti-check"></i> บันทึก</button>`
+  ));
+}
+
+async function submitAddHistory() {
+  const personId = document.getElementById('m-pid').value;
+  const pData = db.find(x => String(x.id) === String(personId));
+  const btn = document.getElementById('btn-save-hist');
+
+  let announceFileName = '', announceFileId = '', announceFileUrl = '';
+
+  // ถ้ามีไฟล์แนบ → อัปโหลดก่อน
+  if (selectedUploadFile['add']) {
+    const file = selectedUploadFile['add'];
+    if (file.size > 10 * 1024 * 1024) { toast('ไฟล์ใหญ่เกิน 10 MB', 'error'); return; }
+    if (btn) { btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader-2" style="animation:spin .8s linear infinite"></i> กำลังอัปโหลด...'; }
+    try {
+      const base64 = await fileToBase64(file);
+      const personName = pData ? (pData.prefix + pData.firstName + ' ' + pData.lastName) : '';
+      const uploadRes = await api({ action: 'uploadFile', payload: {
+        fileName: file.name, mimeType: file.type || 'application/pdf',
+        base64Data: base64, personId, personName,
+      }});
+      if (uploadRes.ok) {
+        announceFileName = uploadRes.fileName;
+        announceFileId   = uploadRes.fileId;
+        announceFileUrl  = uploadRes.fileUrl;
+      } else { toast('อัปโหลดไฟล์ไม่สำเร็จ: ' + uploadRes.error, 'error'); }
+    } catch(e) { toast('อัปโหลดไฟล์ไม่สำเร็จ', 'error'); }
+    finally { if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-check"></i> บันทึก'; } }
+  }
+
+  const payload = {
+    personId,
+    rank:            document.getElementById('m-rank').value,
+    receiveDate:     document.getElementById('m-rdate').value,
+    gazetteDate:     document.getElementById('m-gdate').value,
+    status:          document.getElementById('m-status').value,
+    note:            document.getElementById('m-note').value,
+    announceFileName, announceFileId, announceFileUrl,
+  };
+  try {
+    const res = await api({ action: 'addHistory', payload });
+    if (pData) { if (!pData.histories) pData.histories = []; pData.histories.push({ ...payload, id: res.id }); }
+    delete selectedUploadFile['add'];
+    closeModal(); toast('เพิ่มประวัติสำเร็จ', 'success');
+    renderAll(); selectPerson(personId);
+  } catch(e) { toast('เกิดข้อผิดพลาด: ' + e.message, 'error'); }
+}
+
+// Edit History
+function openEditHistoryModal(personId, histId) {
+  const p = db.find(x => String(x.id) === String(personId));
+  const h = (p?.histories || []).find(x => String(x.id) === String(histId));
+  if (!h) return;
+  const hasFile = h.announceFileName || h.announceFile;
+  showModal(modalWrap('edit','แก้ไขประวัติเครื่องราช',`
+    <input type="hidden" id="m-pid" value="${personId}">
+    <input type="hidden" id="m-hid" value="${histId}">
+    <input type="hidden" id="m-old-fileid" value="${h.announceFileId||''}">
+    <div class="form-group"><label>ชั้นเครื่องราช</label><select id="m-rank">${rankOptions(h.rank)}</select></div>
+    <div class="form-row">
+      <div class="form-group"><label>วันที่ได้รับ</label><input type="date" id="m-rdate" value="${isoToInputDate(h.receiveDate)}"></div>
+      <div class="form-group"><label>วันประกาศราชกิจจา</label><input type="date" id="m-gdate" value="${isoToInputDate(h.gazetteDate)}"></div>
+    </div>
+    <div class="form-group"><label>สถานะ</label><input id="m-status" value="${h.status||''}"></div>
+    <div class="form-group">
+      <label>ไฟล์ประกาศ PDF</label>
+      ${hasFile ? `<div class="upload-preview" id="uz-current-file">
+          <i class="ti ti-file-text"></i>
+          <div>
+            <div class="up-name">${h.announceFileName || h.announceFile}</div>
+            <div class="up-size">${h.announceFileUrl ? '<a href="'+h.announceFileUrl+'" target="_blank" style="color:var(--navy);font-size:11px;">ดูไฟล์เดิม ↗</a>' : 'ไฟล์เดิม'}</div>
+          </div>
+          <button onclick="clearCurrentFile()" title="เปลี่ยนไฟล์">✕</button>
+        </div>` : ''}
+      <div class="upload-zone ${hasFile ? 'style="display:none"' : ''}" id="uz-edit"
+           ondragover="event.preventDefault();this.classList.add('drag')"
+           ondragleave="this.classList.remove('drag')"
+           ondrop="handleDrop(event,'edit')">
+        <input type="file" accept=".pdf,application/pdf" id="m-file-input-edit" onchange="handleFileSelect(this,'edit')">
+        <i class="ti ti-file-upload"></i>
+        <div class="uz-label">คลิกหรือลากไฟล์ PDF มาวางที่นี่</div>
+        <div class="uz-hint">อัปโหลดไฟล์ใหม่เพื่อแทนที่ไฟล์เดิม</div>
+      </div>
+      <div id="uz-preview-edit" style="display:none" class="upload-preview">
+        <i class="ti ti-file-text"></i>
+        <div>
+          <div class="up-name" id="uz-name-edit"></div>
+          <div class="up-size" id="uz-size-edit"></div>
+        </div>
+        <button onclick="clearFile('edit')" title="ลบไฟล์">✕</button>
+      </div>
+    </div>
+    <div class="form-group"><label>หมายเหตุ</label><textarea id="m-note" rows="2">${h.note||''}</textarea></div>`,
+    `<button class="btn btn-outline" onclick="closeModal()">ยกเลิก</button>
+     <button class="btn btn-primary" id="btn-edit-hist" onclick="submitEditHistory()"><i class="ti ti-check"></i> บันทึก</button>`
+  ));
+}
+
+async function submitEditHistory() {
+  const personId = document.getElementById('m-pid').value;
+  const id       = document.getElementById('m-hid').value;
+  const oldFileId = document.getElementById('m-old-fileid')?.value || '';
+  const pData    = db.find(x => String(x.id) === String(personId));
+  const hData    = (pData?.histories || []).find(x => String(x.id) === String(id));
+  const btn      = document.getElementById('btn-edit-hist');
+
+  let announceFileName = hData?.announceFileName || hData?.announceFile || '';
+  let announceFileId   = hData?.announceFileId   || '';
+  let announceFileUrl  = hData?.announceFileUrl  || '';
+
+  // ถ้ามีไฟล์ใหม่ → อัปโหลด
+  if (selectedUploadFile['edit']) {
+    const file = selectedUploadFile['edit'];
+    if (file.size > 10 * 1024 * 1024) { toast('ไฟล์ใหญ่เกิน 10 MB', 'error'); return; }
+    if (btn) { btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader-2" style="animation:spin .8s linear infinite"></i> กำลังอัปโหลด...'; }
+    try {
+      const base64 = await fileToBase64(file);
+      const personName = pData ? (pData.prefix + pData.firstName + ' ' + pData.lastName) : '';
+      const uploadRes = await api({ action: 'uploadFile', payload: {
+        fileName: file.name, mimeType: file.type || 'application/pdf',
+        base64Data: base64, personId, personName,
+      }});
+      if (uploadRes.ok) {
+        // ลบไฟล์เก่าออกจาก Drive (ถ้ามี)
+        if (oldFileId) { try { await api({ action:'deleteFile', payload:{fileId: oldFileId} }); } catch(e){} }
+        announceFileName = uploadRes.fileName;
+        announceFileId   = uploadRes.fileId;
+        announceFileUrl  = uploadRes.fileUrl;
+      } else { toast('อัปโหลดไฟล์ไม่สำเร็จ: ' + uploadRes.error, 'error'); }
+    } catch(e) { toast('อัปโหลดไฟล์ไม่สำเร็จ', 'error'); }
+    finally { if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-check"></i> บันทึก'; } }
+  }
+
+  // ถ้า clearCurrentFile ถูกกด (ไฟล์เดิมถูกลบ, ไม่มีไฟล์ใหม่)
+  const currentHidden = document.getElementById('uz-current-file');
+  if (currentHidden && currentHidden.style.display === 'none' && !selectedUploadFile['edit']) {
+    if (oldFileId) { try { await api({ action:'deleteFile', payload:{fileId: oldFileId} }); } catch(e){} }
+    announceFileName = ''; announceFileId = ''; announceFileUrl = '';
+  }
+
+  const payload = {
+    id,
+    rank:            document.getElementById('m-rank').value,
+    receiveDate:     document.getElementById('m-rdate').value,
+    gazetteDate:     document.getElementById('m-gdate').value,
+    status:          document.getElementById('m-status').value,
+    note:            document.getElementById('m-note').value,
+    announceFileName, announceFileId, announceFileUrl,
+  };
+  try {
+    await api({ action: 'editHistory', payload });
+    if (hData) Object.assign(hData, payload);
+    delete selectedUploadFile['edit'];
+    closeModal(); toast('บันทึกสำเร็จ', 'success');
+    renderAll(); selectPerson(personId);
+  } catch(e) { toast('เกิดข้อผิดพลาด: ' + e.message, 'error'); }
+}
+
+// Add Tenure
+function openAddTenureModal(personId) {
+  const p = db.find(x => String(x.id) === String(personId));
+  showModal(modalWrap('calendar','เพิ่มวาระดำรงตำแหน่ง',`
+    <input type="hidden" id="m-pid" value="${personId}">
+    <div class="form-group"><label>ตำแหน่ง</label><input id="m-tpos" value="${p?.position||''}"></div>
+    <div class="form-row">
+      <div class="form-group"><label>วันเริ่มต้น</label><input type="date" id="m-tstart"></div>
+      <div class="form-group"><label>วันสิ้นสุด (ว่างถ้าปัจจุบัน)</label><input type="date" id="m-tend"></div>
+    </div>
+    <div class="form-group"><label>หมายเหตุ</label><textarea id="m-tnote" rows="2"></textarea></div>`,
+    `<button class="btn btn-outline" onclick="closeModal()">ยกเลิก</button>
+     <button class="btn btn-primary" onclick="submitAddTenure()"><i class="ti ti-check"></i> บันทึก</button>`
+  ));
+}
+
+async function submitAddTenure() {
+  const personId = document.getElementById('m-pid').value;
+  const payload = {
+    personId, position: document.getElementById('m-tpos').value,
+    startDate: document.getElementById('m-tstart').value,
+    endDate: document.getElementById('m-tend').value,
+    note: document.getElementById('m-tnote').value,
+  };
+  try {
+    const res = await api({ action: 'addTenure', payload });
+    const p = db.find(x => String(x.id) === String(personId));
+    if (p) { if (!p.tenures) p.tenures = []; p.tenures.push({ ...payload, id: res.id }); }
+    closeModal(); toast('เพิ่มวาระสำเร็จ', 'success');
+    renderAll(); selectPerson(personId);
+  } catch(e) { toast('เกิดข้อผิดพลาด', 'error'); }
+}
+
+// Edit Tenure
+function openEditTenureModal(personId, tenureId) {
+  const p = db.find(x => String(x.id) === String(personId));
+  const t = (p?.tenures || []).find(x => String(x.id) === String(tenureId));
+  if (!t) return;
+  showModal(modalWrap('edit','แก้ไขวาระดำรงตำแหน่ง',`
+    <input type="hidden" id="m-pid" value="${personId}">
+    <input type="hidden" id="m-tid" value="${tenureId}">
+    <div class="form-group"><label>ตำแหน่ง</label><input id="m-tpos" value="${t.position||''}"></div>
+    <div class="form-row">
+      <div class="form-group"><label>วันเริ่มต้น</label><input type="date" id="m-tstart" value="${isoToInputDate(t.startDate)}"></div>
+      <div class="form-group"><label>วันสิ้นสุด</label><input type="date" id="m-tend" value="${isoToInputDate(t.endDate)}"></div>
+    </div>
+    <div class="form-group"><label>หมายเหตุ</label><textarea id="m-tnote" rows="2">${t.note||''}</textarea></div>`,
+    `<button class="btn btn-outline" onclick="closeModal()">ยกเลิก</button>
+     <button class="btn btn-primary" onclick="submitEditTenure()"><i class="ti ti-check"></i> บันทึก</button>`
+  ));
+}
+
+async function submitEditTenure() {
+  const personId = document.getElementById('m-pid').value;
+  const id = document.getElementById('m-tid').value;
+  const payload = {
+    id, position: document.getElementById('m-tpos').value,
+    startDate: document.getElementById('m-tstart').value,
+    endDate: document.getElementById('m-tend').value,
+    note: document.getElementById('m-tnote').value,
+  };
+  try {
+    await api({ action: 'editTenure', payload });
+    const p = db.find(x => String(x.id) === String(personId));
+    const t = (p?.tenures || []).find(x => String(x.id) === String(id));
+    if (t) Object.assign(t, payload);
+    closeModal(); toast('บันทึกสำเร็จ', 'success');
+    renderAll(); selectPerson(personId);
+  } catch(e) { toast('เกิดข้อผิดพลาด', 'error'); }
+}
+
+// ===================== SETTINGS =====================
+function saveSettingsUrl() {
+  const url = document.getElementById('settings-url').value.trim();
+  if (!url) { toast('กรุณากรอก URL', 'error'); return; }
+  localStorage.setItem(STORAGE_KEY, url);
+  API_URL = url;
+  toast('บันทึก URL สำเร็จ', 'success');
+}
+
+function clearUrl() {
+  if (!confirm('ยกเลิกการเชื่อมต่อ?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload();
+}
+
+// ===================== REPORT TABS =====================
+function switchReportTab(tab) {
+  document.getElementById('report-panel-group').style.display  = tab === 'group'  ? '' : 'none';
+  document.getElementById('report-panel-person').style.display = tab === 'person' ? '' : 'none';
+  document.getElementById('rtab-group').className  = 'btn btn-sm ' + (tab === 'group'  ? 'btn-primary' : 'btn-outline');
+  document.getElementById('rtab-person').className = 'btn btn-sm ' + (tab === 'person' ? 'btn-primary' : 'btn-outline');
+  if (tab === 'person') renderPersonReportList();
+}
+
+function renderPersonReportList() {
+  const type = document.getElementById('rp-type').value;
+  const q    = document.getElementById('rp-search').value.toLowerCase();
+  let persons = db;
+  if (type) persons = persons.filter(p => p.type === type);
+  if (q)    persons = persons.filter(p => (p.firstName + p.lastName + p.position).toLowerCase().includes(q));
+
+  const container = document.getElementById('rp-list');
+  if (!persons.length) {
+    container.innerHTML = '<div class="empty"><i class="ti ti-search"></i>ไม่พบข้อมูล</div>';
+    return;
+  }
+  container.innerHTML = persons.map(p => {
+    const latest  = getLatestRank(p);
+    const days    = totalTenureDays(p);
+    const ty = Math.floor(days/365), tm = Math.floor((days%365)/30);
+    const elig    = isEligible(p);
+    const full    = isFull(p);
+    return `<div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 14px;display:flex;align-items:center;gap:12px;transition:var(--transition);" onmouseover="this.style.borderColor='var(--border-mid)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div class="avatar avatar-${p.type}" style="width:40px;height:40px;font-size:15px;flex-shrink:0">${initials(p)}</div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:14px;font-weight:600;color:var(--text-dark)">${p.prefix}${p.firstName} ${p.lastName}</div>
+        <div style="font-size:12px;color:var(--text-soft);margin-top:1px;">${p.position}${p.district ? ' · อ.' + p.district : ''}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;">
+          ${latest ? '<span class="badge badge-gold">'+latest+'</span>' : '<span class="badge badge-gray">ยังไม่ได้รับ</span>'}
+          ${elig ? '<span class="badge badge-green">ครบกำหนดยื่น</span>' : ''}
+          ${full ? '<span class="badge badge-orange">เต็มชั้นแล้ว</span>' : ''}
+          <span class="badge badge-gray">${ty} ปี ${tm} เดือน</span>
+          <span class="badge badge-gray">${(p.histories||[]).length} ครั้ง</span>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-sm" onclick="generatePersonPDF('${p.id}')" style="flex-shrink:0;">
+        <i class="ti ti-printer"></i> พิมพ์
+      </button>
+    </div>`;
+  }).join('');
+}
+
+// ===================== PDF =====================
+function generatePDF() {
+  const type  = document.getElementById('report-type').value;
+  const year  = document.getElementById('report-year').value;
+  const title = document.getElementById('report-title').value;
+  const org   = document.getElementById('report-org').value;
+
+  let persons = db;
+  if (type === 'exec')     persons = db.filter(p => p.type === 'exec');
+  if (type === 'member')   persons = db.filter(p => p.type === 'member');
+  if (type === 'eligible') persons = db.filter(isEligible);
+
+  const rows = persons.map((p, i) => {
+    const latest = getLatestRank(p);
+    const lastH  = (p.histories || []).slice(-1)[0];
+    const days   = totalTenureDays(p);
+    const ty = Math.floor(days / 365), tm = Math.floor((days % 365) / 30);
+    const next = latest ? (NEXT_RANK[latest] || 'เต็มชั้นแล้ว') : 'เบญจมาภรณ์มงกุฎไทย (บ.ม.)';
+    return `<tr>
+      <td class="center">${i + 1}</td>
+      <td>${p.prefix}${p.firstName} ${p.lastName}</td>
+      <td>${p.position}</td>
+      <td class="center">${p.district || '-'}${p.zone ? '<br>เขต ' + p.zone : ''}</td>
+      <td>${latest || '-'}</td>
+      <td class="center">${lastH?.receiveDate ? formatThaiDate(lastH.receiveDate, true) : '-'}</td>
+      <td class="center">${ty} ปี ${tm} เดือน</td>
+      <td>${isFull(p) ? '<span class="full">เต็มชั้นแล้ว</span>' : next}</td>
+      <td>${lastH?.status || '-'}</td>
+    </tr>`;
+  }).join('');
+
+  const printedAt = new Date().toLocaleDateString('th-TH', {year:'numeric', month:'long', day:'numeric'});
+  const w = window.open('', '_blank');
+  w.document.write(reportGroupHTML(title, org, year, rows, persons.length, printedAt));
+  w.document.close();
+}
+
+// ── รายงานรายบุคคล ──────────────────────────────────────────────────────────
+function generatePersonPDF(personId) {
+  const p = db.find(x => String(x.id) === String(personId));
+  if (!p) return;
+
+  const days = totalTenureDays(p);
+  const ty = Math.floor(days/365), tm = Math.floor((days%365)/30), td = days%30;
+  const latest = getLatestRank(p);
+  const next   = latest ? (NEXT_RANK[latest] || null) : 'เบญจมาภรณ์มงกุฎไทย (บ.ม.)';
+  const full   = isFull(p);
+  const elig   = isEligible(p);
+  const today  = new Date().toISOString().split('T')[0];
+
+  // ตารางวาระดำรงตำแหน่ง
+  const tenureRows = (p.tenures || []).map((t, i) => {
+    const diff = calcDiff(t.startDate, t.endDate || today);
+    return `<tr>
+      <td class="center">${i + 1}</td>
+      <td>${t.position || p.position}</td>
+      <td class="center">${formatThaiDate(t.startDate)}</td>
+      <td class="center">${t.endDate ? formatThaiDate(t.endDate) : 'ปัจจุบัน'}</td>
+      <td class="center">${diffStr(diff, true)}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="5" class="center" style="color:#aaa">ไม่มีข้อมูลวาระ</td></tr>';
+
+  // ตารางประวัติเครื่องราช
+  const histRows = (p.histories || []).map((h, i) => {
+    const statusClass = (h.status||'').includes('เต็ม') ? 'status-full'
+                      : (h.status||'').includes('รอ')   ? 'status-wait'
+                      : h.status ? 'status-done' : '';
+    return `<tr>
+      <td class="center">${i + 1}</td>
+      <td><span class="rank-badge">${h.rank || '-'}</span></td>
+      <td class="center">${formatThaiDate(h.receiveDate)}</td>
+      <td class="center">${formatThaiDate(h.gazetteDate)}</td>
+      <td class="center">${h.status ? '<span class="status-chip '+statusClass+'">'+h.status+'</span>' : '-'}</td>
+      <td>${h.note || '-'}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="6" class="center" style="color:#aaa;padding:16px;">ยังไม่มีประวัติเครื่องราช</td></tr>';
+
+  const eligBox = elig && next
+    ? `<div class="elig-row green"><span class="dot"></span><span>ครบกำหนดยื่นขอเครื่องราช — ชั้นที่ขอได้: <strong>${next}</strong></span></div>`
+    : full
+    ? `<div class="elig-row orange"><span class="dot"></span><span>เต็มชั้นเครื่องราชอิสริยาภรณ์แล้ว ไม่สามารถยื่นขอเพิ่มได้</span></div>`
+    : '';
+
+  const printedAt = new Date().toLocaleDateString('th-TH', {year:'numeric', month:'long', day:'numeric'});
+  const w = window.open('', '_blank');
+  w.document.write(reportPersonHTML(p, tenureRows, histRows, ty, tm, td, eligBox, printedAt));
+  w.document.close();
+}
+
+// ── HTML templates ───────────────────────────────────────────────────────────
+const SHARED_CSS = `
+  * { box-sizing: border-box; }
+  body { font-family: 'Sarabun', sans-serif; font-size: 12px; margin: 0; padding: 20px; color: #1a1a2e; }
+  .print-btn { display: flex; gap: 10px; margin-bottom: 18px; }
+  .print-btn button { padding: 8px 18px; border: none; border-radius: 8px; cursor: pointer; font-family: 'Sarabun',sans-serif; font-size: 13px; font-weight: 600; }
+  .print-btn .p { background: #0d2b55; color: #fff; }
+  .print-btn .c { background: #e2d9cc; color: #1a1a2e; }
+  .report-header { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #0d2b55; padding-bottom: 14px; }
+  .report-header h1 { font-size: 16px; font-weight: 700; color: #0d2b55; margin-bottom: 4px; }
+  .report-header p  { font-size: 12px; color: #718096; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 0; }
+  th { background: #0d2b55; color: #fff; padding: 8px 10px; text-align: left; font-weight: 600; }
+  td { padding: 7px 10px; border-bottom: 0.5px solid #e2d9cc; vertical-align: top; }
+  tr:nth-child(even) td { background: #faf8f4; }
+  .center { text-align: center; }
+  .full   { color: #b45309; font-weight: 600; }
+  .meta   { font-size: 11px; color: #718096; margin-top: 14px; text-align: right; }
+  @media print { .print-btn { display: none !important; } body { padding: 10px; } }
+`;
+
+function reportGroupHTML(title, org, year, rows, count, printedAt) {
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${title}</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>${SHARED_CSS}</style></head><body>
+<div class="print-btn">
+  <button class="p" onclick="window.print()">🖨️ พิมพ์ / บันทึก PDF</button>
+  <button class="c" onclick="window.close()">✕ ปิด</button>
+</div>
+<div class="report-header">
+  <div style="font-size:26px;margin-bottom:6px">🏅</div>
+  <h1>${title}</h1>
+  <p>${org} · ปี พ.ศ. ${year}</p>
+</div>
+<table>
+<thead><tr>
+  <th style="width:32px">ลำดับ</th><th>ชื่อ-สกุล</th><th>ตำแหน่ง</th>
+  <th style="width:80px">อำเภอ/เขต</th><th>เครื่องราชล่าสุด</th>
+  <th style="width:84px">วันที่รับ</th><th style="width:72px">รวมเวลา</th>
+  <th>ชั้นที่ขอได้ต่อไป</th><th>สถานะ</th>
+</tr></thead>
+<tbody>${rows}</tbody>
+</table>
+<div class="meta">พิมพ์เมื่อ ${printedAt} · จำนวน ${count} ราย</div>
+</body></html>`;
+}
+
+function reportPersonHTML(p, tenureRows, histRows, ty, tm, td, eligBox, printedAt) {
+  const fullName = p.prefix + p.firstName + ' ' + p.lastName;
+  const typeTh   = p.type === 'exec' ? 'คณะผู้บริหาร' : 'สมาชิกสภา';
+  const latestRank = getLatestRank(p) || '-';
+  const nextRank   = getLatestRank(p) ? (NEXT_RANK[getLatestRank(p)] || 'เต็มชั้นสูงสุดแล้ว') : 'เบญจมาภรณ์มงกุฎไทย (บ.ม.)';
+  const histCount  = (p.histories || []).length;
+  const tenureCount = (p.tenures || []).length;
+  const startDateDisplay = p.startDate ? formatThaiDate(p.startDate) : '-';
+
+  return `<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>ทะเบียนเครื่องราชฯ — ${fullName}</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Sarabun', sans-serif; font-size: 13px; background: #fff; color: #1a1a2e; padding: 0; }
+  .page { max-width: 800px; margin: 0 auto; padding: 28px 32px; }
+
+  /* ── Print toolbar (hidden on print) ── */
+  .print-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #0d2b55; padding: 10px 24px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  }
+  .print-bar span { flex: 1; color: rgba(255,255,255,.7); font-size: 13px; }
+  .print-bar button {
+    padding: 7px 18px; border: none; border-radius: 8px;
+    font-family: 'Sarabun', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer;
+  }
+  .btn-print { background: #c9963a; color: #0d2b55; }
+  .btn-close  { background: rgba(255,255,255,.15); color: #fff; }
+  .print-spacer { height: 52px; }
+
+  /* ── Document header ── */
+  .doc-header {
+    text-align: center; padding-bottom: 16px; margin-bottom: 18px;
+    border-bottom: 2.5px solid #0d2b55; position: relative;
+  }
+  .doc-header::after {
+    content: ''; display: block; height: 1px;
+    background: #c9963a; margin-top: 3px;
+  }
+  .doc-header .org { font-size: 15px; font-weight: 700; color: #0d2b55; font-family: 'Noto Serif Thai', serif; }
+  .doc-header .doc-title { font-size: 12px; color: #718096; margin-top: 3px; letter-spacing: .3px; }
+  .doc-header .doc-no { font-size: 11px; color: #a0aec0; margin-top: 2px; }
+
+  /* ── Person card ── */
+  .person-card {
+    background: linear-gradient(135deg, #0d2b55 0%, #1a3f75 100%);
+    border-radius: 14px; padding: 20px 24px; margin-bottom: 18px;
+    display: flex; align-items: center; gap: 20px; color: #fff;
+    position: relative; overflow: hidden;
+  }
+  .person-card::before {
+    content: '🏅'; position: absolute; right: 20px; top: 50%;
+    transform: translateY(-50%); font-size: 64px; opacity: .08;
+  }
+  .person-avatar {
+    width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(201,150,58,.25); border: 2.5px solid rgba(201,150,58,.6);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; font-weight: 700; color: #e8b84b; font-family: 'Noto Serif Thai', serif;
+  }
+  .person-info { flex: 1; min-width: 0; }
+  .person-name { font-size: 20px; font-weight: 700; font-family: 'Noto Serif Thai', serif; line-height: 1.2; }
+  .person-sub  { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 5px; line-height: 1.6; }
+  .person-type-badge {
+    display: inline-block; background: rgba(201,150,58,.25);
+    border: 1px solid rgba(201,150,58,.5); color: #e8b84b;
+    font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 99px; margin-top: 6px;
+  }
+
+  /* ── Summary info grid ── */
+  .info-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px; }
+  .info-cell {
+    background: #faf8f4; border: 1px solid #e2d9cc; border-radius: 10px; padding: 12px 14px; text-align: center;
+  }
+  .info-cell .lbl { font-size: 10px; color: #718096; text-transform: uppercase; letter-spacing: .4px; margin-bottom: 5px; }
+  .info-cell .val { font-size: 16px; font-weight: 700; color: #0d2b55; line-height: 1; }
+  .info-cell .sub { font-size: 10px; color: #a0aec0; margin-top: 3px; }
+
+  /* ── Tenure summary ── */
+  .tenure-box {
+    background: linear-gradient(135deg, #eef3fb, #e8effc);
+    border: 1px solid #b3c9f0; border-radius: 10px;
+    padding: 14px 18px; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .tenure-box .icon { font-size: 28px; }
+  .tenure-box .big { font-size: 22px; font-weight: 700; color: #0d2b55; }
+  .tenure-box .sm  { font-size: 11px; color: #4a5568; margin-top: 2px; }
+
+  /* ── Status badges ── */
+  .elig-row {
+    border-radius: 10px; padding: 10px 16px; margin-bottom: 18px;
+    display: flex; align-items: center; gap: 10px; font-size: 12px;
+  }
+  .elig-row.green  { background: #e8f5ee; border: 1px solid #a7d9bc; color: #1a5c37; }
+  .elig-row.orange { background: #fef3c7; border: 1px solid #fcd47a; color: #7c3d0c; }
+  .elig-row .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .elig-row.green  .dot { background: #2d7a4f; }
+  .elig-row.orange .dot { background: #b45309; }
+
+  /* ── Section heading ── */
+  .sec-head {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700; color: #0d2b55;
+    text-transform: uppercase; letter-spacing: .6px;
+    margin: 22px 0 10px; padding-bottom: 7px;
+    border-bottom: 2px solid #e2d9cc;
+  }
+  .sec-head::before {
+    content: ''; width: 4px; height: 16px; border-radius: 2px;
+    background: linear-gradient(180deg, #c9963a, #e8b84b); flex-shrink: 0;
+  }
+
+  /* ── Tables ── */
+  .tbl-wrap { border: 1px solid #e2d9cc; border-radius: 10px; overflow: hidden; margin-bottom: 6px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { background: #0d2b55; color: #fff; padding: 9px 12px; text-align: left; font-weight: 600; font-size: 11px; }
+  td { padding: 9px 12px; border-bottom: 1px solid #e2d9cc; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #faf8f4; }
+  .center { text-align: center; }
+  .rank-badge {
+    display: inline-block; background: #fdf4e3; border: 1px solid #e8c97a;
+    color: #92600a; font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 99px;
+  }
+  .status-chip {
+    display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 99px; font-weight: 500;
+  }
+  .status-done { background: #e8f5ee; color: #1a5c37; border: 1px solid #a7d9bc; }
+  .status-wait { background: #fef3c7; color: #7c3d0c; border: 1px solid #fcd47a; }
+  .status-full { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+  /* ── Signature block ── */
+  .sig-block {
+    margin-top: 32px; padding-top: 20px; border-top: 1px dashed #c9b89a;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+  }
+  .sig-item { text-align: center; }
+  .sig-line  { border-bottom: 1px solid #718096; margin: 36px 20px 6px; }
+  .sig-label { font-size: 11px; color: #718096; }
+
+  /* ── Footer ── */
+  .doc-footer { margin-top: 20px; padding-top: 10px; border-top: 1px solid #e2d9cc; display: flex; justify-content: space-between; font-size: 10px; color: #a0aec0; }
+
+  @media print {
+    .print-bar, .print-spacer { display: none !important; }
+    body { padding: 0; }
+    .page { padding: 15px 20px; max-width: 100%; }
+    .person-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .info-cell, .tenure-box, .tbl-wrap th, .rank-badge, .status-chip, .elig-row { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <span>ทะเบียนเครื่องราชอิสริยาภรณ์ — ${fullName}</span>
+  <button class="btn-print" onclick="window.print()">🖨️ พิมพ์ / บันทึก PDF</button>
+  <button class="btn-close"  onclick="window.close()">✕ ปิด</button>
+</div>
+<div class="print-spacer"></div>
+
+<div class="page">
+
+  <!-- Document header -->
+  <div class="doc-header">
+    <div class="org">องค์การบริหารส่วนจังหวัดยโสธร</div>
+    <div class="doc-title">ทะเบียนประวัติการได้รับพระราชทานเครื่องราชอิสริยาภรณ์ (รายบุคคล)</div>
+  </div>
+
+  <!-- Person card -->
+  <div class="person-card">
+    <div class="person-avatar">${(p.firstName||'?')[0]}</div>
+    <div class="person-info">
+      <div class="person-name">${fullName}</div>
+      <div class="person-sub">
+        ${p.position}${p.district ? ' · อำเภอ' + p.district + (p.zone ? ' เขต ' + p.zone : '') : ''}
+        ${p.orderNo ? '<br>คำสั่ง/ประกาศ: ' + p.orderNo : ''}
+        ${p.startDate ? '<br>วันรับตำแหน่ง: ' + startDateDisplay : ''}
+      </div>
+      <span class="person-type-badge">${typeTh}</span>
+    </div>
+  </div>
+
+  <!-- Summary grid -->
+  <div class="info-grid">
+    <div class="info-cell">
+      <div class="lbl">เครื่องราชล่าสุด</div>
+      <div class="val" style="font-size:11px;line-height:1.3;margin-top:3px;">${latestRank}</div>
+    </div>
+    <div class="info-cell">
+      <div class="lbl">จำนวนครั้งที่ได้รับ</div>
+      <div class="val">${histCount}</div>
+      <div class="sub">ครั้ง</div>
+    </div>
+    <div class="info-cell">
+      <div class="lbl">จำนวนวาระ</div>
+      <div class="val">${tenureCount}</div>
+      <div class="sub">วาระ</div>
+    </div>
+    <div class="info-cell">
+      <div class="lbl">ชั้นที่ขอได้ต่อไป</div>
+      <div class="val" style="font-size:10px;line-height:1.4;margin-top:3px;">${isFull(p) ? 'เต็มชั้นแล้ว' : nextRank}</div>
+    </div>
+  </div>
+
+  <!-- Tenure total -->
+  <div class="tenure-box">
+    <div class="icon">📅</div>
+    <div>
+      <div class="big">${ty} ปี ${tm} เดือน ${td} วัน</div>
+      <div class="sm">รวมระยะเวลาดำรงตำแหน่งทุกวาระ</div>
+    </div>
+  </div>
+
+  <!-- Eligible status -->
+  ${eligBox}
+
+  <!-- Tenure table -->
+  <div class="sec-head">วาระดำรงตำแหน่ง</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th class="center" style="width:34px">ลำดับ</th>
+        <th>ตำแหน่ง</th>
+        <th class="center" style="width:115px">วันเริ่มต้น</th>
+        <th class="center" style="width:115px">วันสิ้นสุด</th>
+        <th class="center" style="width:90px">รวมระยะเวลา</th>
+      </tr></thead>
+      <tbody>${tenureRows}</tbody>
+    </table>
+  </div>
+
+  <!-- History table -->
+  <div class="sec-head">ประวัติการได้รับพระราชทานเครื่องราชอิสริยาภรณ์</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th class="center" style="width:34px">ลำดับ</th>
+        <th>ชั้นเครื่องราชอิสริยาภรณ์</th>
+        <th class="center" style="width:110px">วันที่ได้รับ</th>
+        <th class="center" style="width:110px">วันประกาศราชกิจจา</th>
+        <th class="center" style="width:80px">สถานะ</th>
+        <th>หมายเหตุ</th>
+      </tr></thead>
+      <tbody>${histRows}</tbody>
+    </table>
+  </div>
+
+  <!-- Signature -->
+  <div class="sig-block">
+    <div class="sig-item">
+      <div class="sig-line"></div>
+      <div class="sig-label">ผู้จัดทำ</div>
+    </div>
+    <div class="sig-item">
+      <div class="sig-line"></div>
+      <div class="sig-label">ผู้ตรวจสอบ</div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <span>ระบบทะเบียนเครื่องราชอิสริยาภรณ์ อบจ.ยโสธร</span>
+    <span>พิมพ์เมื่อ ${printedAt}</span>
+  </div>
+
+</div>
+</body></html>`;
+}
+
+// ===================== TOAST =====================
+function toast(msg, type = '') {
+  const wrap = document.getElementById('toast-wrap');
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  el.innerHTML = `<i class="ti ti-${type==='success'?'check':'alert-circle'}" style="font-size:16px;flex-shrink:0"></i>${msg}`;
+  wrap.appendChild(el);
+  setTimeout(() => el.remove(), 3200);
+}
+</script>
+</body>
+</html>
