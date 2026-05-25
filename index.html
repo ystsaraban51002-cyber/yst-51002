@@ -1528,11 +1528,15 @@ async function submitAddHistory() {
   const pData = db.find(x => String(x.id) === String(personId));
   const btn = document.getElementById('btn-save-hist');
 
-  if (btn) { btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader-2" style="animation:spin .8s linear infinite"></i> กำลังบันทึก...'; }
+  if (btn) { 
+    btn.disabled = true; 
+    btn.innerHTML = '<i class="ti ti-loader-2" style="animation:spin .8s linear infinite"></i> กำลังบันทึก...'; 
+  }
 
-  // ดึงค่าลิงก์ที่เรากรอกในช่องมาใช้โดยตรง ไม่ต้องแปลงไฟล์ ไม่ต้องส่งผ่าน API อัปโหลดให้รวนอีกต่อไป
-  const fileUrlInput = document.getElementById('m-file-link-input').value;
+  // 1. ดึงค่าจากช่องกรอกลิงก์ที่เราทำไว้มาใช้โดยตรง
+  const fileUrlInput = document.getElementById('m-file-link-input') ? document.getElementById('m-file-link-input').value : '';
 
+  // 2. จัดเตรียมก้อนข้อมูล ยิงตรงเข้า Google Sheets ช่องคอลัมน์ใหม่ทันที
   const payload = {
     personId,
     rank:            document.getElementById('m-rank').value,
@@ -1540,23 +1544,24 @@ async function submitAddHistory() {
     gazetteDate:     document.getElementById('m-gdate').value,
     status:          document.getElementById('m-status').value,
     note:            document.getElementById('m-note').value,
-    announceFileName: fileUrlInput ? "เปิดดูไฟล์ประกาศ PDF" : "", 
-    announceFileId:   "", 
-    announceFileUrl:  fileUrlInput, // ลิงก์จะถูกส่งไปบันทึกลง Google Sheets ช่องที่ 7 ทันที
+    announceFileUrl: fileUrlInput // เอาลิงก์ส่งไปบันทึกในช่องที่ 7 ของ Google Sheets โดยตรง
   };
 
   try {
+    // ส่งข้อมูลไปที่สคริปต์เพื่อบันทึกประวัติลง Google Sheets
     const res = await api({ action: 'addHistory', payload });
+    
     if (pData) { 
       if (!pData.histories) pData.histories = []; 
       pData.histories.push({ ...payload, id: res.id }); 
     }
+    
     closeModal(); 
-    toast('เพิ่มประวัติและบันทึกลิงก์เอกสารสำเร็จเรียบร้อย', 'success');
+    toast('บันทึกประวัติและลิงก์เอกสารสำเร็จเรียบร้อย', 'success');
     renderAll(); 
     selectPerson(personId);
   } catch(e) { 
-    toast('เกิดข้อผิดพลาด: ' + e.message, 'error'); 
+    toast('เกิดข้อผิดพลาดในการบันทึก: ' + e.message, 'error'); 
   } finally {
     if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-check"></i> บันทึก'; }
   }
